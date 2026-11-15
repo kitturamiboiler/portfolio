@@ -1,0 +1,682 @@
+{
+  "tale": {
+    "images": [
+      {
+        "src": "assets/tale/evidence/01-player-before.png",
+        "name": "01-player-before.png",
+        "archive": true,
+        "format": "png",
+        "caption": "기존 플레이어 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/02-player-overlay.png",
+        "name": "02-player-overlay.png",
+        "archive": true,
+        "format": "png",
+        "caption": "중앙 재생 오버레이 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/03-category-home.png",
+        "name": "03-category-home.png",
+        "archive": true,
+        "format": "png",
+        "caption": "카테고리 홈 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/04-home-landscape.png",
+        "name": "04-home-landscape.png",
+        "archive": true,
+        "format": "png",
+        "caption": "가로 화면 홈 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/05-home-larger.png",
+        "name": "05-home-larger.png",
+        "archive": true,
+        "format": "png",
+        "caption": "큰 화면 홈 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/06-voice-picker.png",
+        "name": "06-voice-picker.png",
+        "archive": true,
+        "format": "png",
+        "caption": "목소리 선택 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/07-player-800x400.png",
+        "name": "07-player-800x400.png",
+        "archive": true,
+        "format": "png",
+        "caption": "800×400 플레이어 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/08-player-800x480.png",
+        "name": "08-player-800x480.png",
+        "archive": true,
+        "format": "png",
+        "caption": "800×480 플레이어 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/09-player-1024x600.png",
+        "name": "09-player-1024x600.png",
+        "archive": true,
+        "format": "png",
+        "caption": "1024×600 플레이어 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/10-home-1280x720-concept.svg",
+        "name": "10-home-1280x720-concept.svg",
+        "archive": true,
+        "format": "svg",
+        "caption": "1280×720 홈 시안 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/11-device-setup-design.png",
+        "name": "11-device-setup-design.png",
+        "archive": true,
+        "format": "png",
+        "caption": "기기 설정 설계 보드 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/12-mobile-voice-design.png",
+        "name": "12-mobile-voice-design.png",
+        "archive": true,
+        "format": "png",
+        "caption": "모바일 목소리 설계 보드 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/evidence/13-mobile-story-design.png",
+        "name": "13-mobile-story-design.png",
+        "archive": true,
+        "format": "png",
+        "caption": "모바일 이야기 설계 보드 / 과거 설계·검토 자료"
+      },
+      {
+        "src": "assets/tale/mobile-books.jpg",
+        "name": "mobile-books.jpg",
+        "archive": true,
+        "format": "jpg",
+        "caption": "모바일 웹 · 책 목록 / 2026.11.02 과거 브라우저 캡처"
+      },
+      {
+        "src": "assets/tale/mobile-recording.jpg",
+        "name": "mobile-recording.jpg",
+        "archive": true,
+        "format": "jpg",
+        "caption": "모바일 웹 · 목소리 녹음 / 2026.11.02 과거 브라우저 캡처"
+      },
+      {
+        "src": "assets/tale/mobile-story.jpg",
+        "name": "mobile-story.jpg",
+        "archive": true,
+        "format": "jpg",
+        "caption": "모바일 웹 · 그림과 이야기 입력 / 2026.11.02 과거 브라우저 캡처"
+      },
+      {
+        "src": "assets/tale/current/kiosk-account.jpg",
+        "name": "kiosk-account.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "Pi 기기·저장 관리 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/kiosk-books.jpg",
+        "name": "kiosk-books.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "Pi 책장 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/kiosk-home.jpg",
+        "name": "kiosk-home.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "Pi 동화 종류 선택 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/kiosk-player.jpg",
+        "name": "kiosk-player.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "Pi 플레이어 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/kiosk-setup.jpg",
+        "name": "kiosk-setup.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "Pi 초기 설정 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/kiosk-voice-picker.jpg",
+        "name": "kiosk-voice-picker.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "Pi 목소리 선택 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/mobile-account.jpg",
+        "name": "mobile-account.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "모바일 계정·저장 관리 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/mobile-books.jpg",
+        "name": "mobile-books.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "모바일 책 목록 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/mobile-story.jpg",
+        "name": "mobile-story.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "모바일 그림·요청 입력 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      },
+      {
+        "src": "assets/tale/current/mobile-voices.jpg",
+        "name": "mobile-voices.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "모바일 목소리 입력 / dev 66b1e1e 프론트 캡처 / 테스트 데이터"
+      }
+    ],
+    "docs": [
+      {
+        "title": "사용자와 AI 스피커의 상호작용 설계",
+        "src": "evidence/tale/document-1.txt",
+        "original": "interaction-design.md"
+      },
+      {
+        "title": "사용자 이용 과정",
+        "src": "evidence/tale/document-2.txt",
+        "original": "user-journey.md"
+      }
+    ]
+  },
+  "supjigi": {
+    "images": [
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-08/mobile-build.webp",
+        "name": "archive/2026-11-08/mobile-build.webp",
+        "archive": true,
+        "format": "webp"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-08/mobile-picker.webp",
+        "name": "archive/2026-11-08/mobile-picker.webp",
+        "archive": true,
+        "format": "webp"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-09/builder-after.png",
+        "name": "archive/2026-11-09/builder-after.png",
+        "archive": true,
+        "format": "png"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-09/builder-before.png",
+        "name": "archive/2026-11-09/builder-before.png",
+        "archive": true,
+        "format": "png"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-09/loadout-after.png",
+        "name": "archive/2026-11-09/loadout-after.png",
+        "archive": true,
+        "format": "png"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-09/loadout-before.png",
+        "name": "archive/2026-11-09/loadout-before.png",
+        "archive": true,
+        "format": "png"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-13/performance-before.webp",
+        "name": "archive/2026-11-13/performance-before.webp",
+        "archive": true,
+        "format": "webp"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-13/performance-changes.webp",
+        "name": "archive/2026-11-13/performance-changes.webp",
+        "archive": true,
+        "format": "webp"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-13/performance-check.webp",
+        "name": "archive/2026-11-13/performance-check.webp",
+        "archive": true,
+        "format": "webp"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/reading-after.jpg",
+        "name": "archive/2026-11-15/reading-after.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/reading-before.jpg",
+        "name": "archive/2026-11-15/reading-before.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/search-after.jpg",
+        "name": "archive/2026-11-15/search-after.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/search-before.jpg",
+        "name": "archive/2026-11-15/search-before.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/skill-after.jpg",
+        "name": "archive/2026-11-15/skill-after.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/skill-before.jpg",
+        "name": "archive/2026-11-15/skill-before.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/archive/2026-11-15/tier-table.jpg",
+        "name": "archive/2026-11-15/tier-table.jpg",
+        "archive": true,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-builder.jpg",
+        "name": "mobile-builder.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-detail.jpg",
+        "name": "mobile-detail.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-home-viewport.jpg",
+        "name": "mobile-home-viewport.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-home.jpg",
+        "name": "mobile-home.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-picker.jpg",
+        "name": "mobile-picker.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-search.jpg",
+        "name": "mobile-search.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-skill-dialog.jpg",
+        "name": "mobile-skill-dialog.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/mobile-tiers.jpg",
+        "name": "mobile-tiers.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-builder.jpg",
+        "name": "pc-builder.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-detail.jpg",
+        "name": "pc-detail.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-home-viewport.jpg",
+        "name": "pc-home-viewport.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-home.jpg",
+        "name": "pc-home.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-search.jpg",
+        "name": "pc-search.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-skill-dialog.jpg",
+        "name": "pc-skill-dialog.jpg",
+        "archive": false,
+        "format": "jpg"
+      },
+      {
+        "src": "assets/supjigi/evidence/pc-tiers.jpg",
+        "name": "pc-tiers.jpg",
+        "archive": false,
+        "format": "jpg"
+      }
+    ],
+    "docs": [
+      {
+        "title": "UI 컴포넌트와 스타일 규칙",
+        "src": "evidence/supjigi/document-1.txt",
+        "original": "components.md"
+      },
+      {
+        "title": "디자인 의사결정과 개선 근거",
+        "src": "evidence/supjigi/document-2.txt",
+        "original": "design-decisions.md"
+      },
+      {
+        "title": "운영 환경 성능 재검증 — 2026-11-13",
+        "src": "evidence/supjigi/document-3.txt",
+        "original": "evidence/performance/comparison.md"
+      },
+      {
+        "title": "숲지기 성능 개선 — 로컬 검증 결과",
+        "src": "evidence/supjigi/document-4.txt",
+        "original": "evidence/performance/local-summary.md"
+      },
+      {
+        "title": "사용자 탐색 흐름",
+        "src": "evidence/supjigi/document-5.txt",
+        "original": "user-flow.md"
+      }
+    ]
+  },
+  "omagotchi": {
+    "images": [
+      {
+        "src": "assets/omagotchi/evidence/prototype/home.png",
+        "name": "prototype/home.png",
+        "archive": true,
+        "format": "png",
+        "caption": "초기 프로토타입 / 홈 초기 시안"
+      },
+      {
+        "src": "assets/omagotchi/evidence/prototype/Login.png",
+        "name": "prototype/Login.png",
+        "archive": true,
+        "format": "png",
+        "caption": "초기 프로토타입 / 로그인 초기 시안"
+      },
+      {
+        "src": "assets/omagotchi/evidence/prototype/Stats.png",
+        "name": "prototype/Stats.png",
+        "archive": true,
+        "format": "png",
+        "caption": "초기 프로토타입 / 통계 초기 시안"
+      },
+      {
+        "src": "assets/omagotchi/evidence/storybook/action-dock.png",
+        "name": "storybook/action-dock.png",
+        "archive": true,
+        "format": "png",
+        "caption": "기존 Storybook / 행동 도크"
+      },
+      {
+        "src": "assets/omagotchi/evidence/storybook/home-stage.png",
+        "name": "storybook/home-stage.png",
+        "archive": true,
+        "format": "png",
+        "caption": "기존 Storybook / 홈 Storybook 캡처"
+      },
+      {
+        "src": "assets/omagotchi/evidence/storybook/status-hud.png",
+        "name": "storybook/status-hud.png",
+        "archive": true,
+        "format": "png",
+        "caption": "기존 Storybook / 상태 HUD"
+      },
+      {
+        "src": "assets/omagotchi/evidence/storybook/timer-panel.png",
+        "name": "storybook/timer-panel.png",
+        "archive": true,
+        "format": "png",
+        "caption": "기존 Storybook / 타이머 패널"
+      },
+      {
+        "src": "assets/omagotchi/live/desktop-home.jpg",
+        "name": "desktop-home.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "데스크톱 홈 / 1280×1000 / omagotchi.site 운영 화면 / 2026.11.15"
+      },
+      {
+        "src": "assets/omagotchi/live/desktop-profile.png",
+        "name": "desktop-profile.png",
+        "archive": false,
+        "format": "png",
+        "caption": "내 정보 패널 / 원본 영역 발췌 / omagotchi.site 운영 화면 / 2026.11.15"
+      },
+      {
+        "src": "assets/omagotchi/live/mobile-home.jpg",
+        "name": "mobile-home.jpg",
+        "archive": false,
+        "format": "jpg",
+        "caption": "모바일 홈 / 390×844 / omagotchi.site 운영 화면 / 2026.11.15"
+      },
+      {
+        "src": "assets/omagotchi/live/mobile-quests.png",
+        "name": "mobile-quests.png",
+        "archive": false,
+        "format": "png",
+        "caption": "모바일 퀘스트 / 원본 영역 발췌 / omagotchi.site 운영 화면 / 2026.11.15"
+      }
+    ],
+    "docs": [
+      {
+        "title": "[ADR] React 게임 UI 도구의 단계적 도입",
+        "src": "evidence/omagotchi/document-1.txt",
+        "original": "design/frontend-docs/adr/0003-react-game-ui-tools-incremental-adoption.md"
+      },
+      {
+        "title": "[ADR] CSS 라이브러리 추가 도입 검토 폐기",
+        "src": "evidence/omagotchi/document-2.txt",
+        "original": "design/frontend-docs/adr/0004-css-library-adoption-superseded.md"
+      },
+      {
+        "title": "Home React·Storybook 구조 가이드",
+        "src": "evidence/omagotchi/document-3.txt",
+        "original": "design/frontend-docs/home-ui/01-guides/home-react-storybook-structure.md"
+      },
+      {
+        "title": "공통 UI 디자인 시스템·Storybook 가이드",
+        "src": "evidence/omagotchi/document-4.txt",
+        "original": "design/frontend-docs/home-ui/01-guides/ui-design-system.md"
+      },
+      {
+        "title": "AI 도우미 메신저 레이아웃·모델 선택 리팩토링 기록",
+        "src": "evidence/omagotchi/document-5.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/home-ai-assistant-messenger-refactor.md"
+      },
+      {
+        "title": "Home 하단 HUD 반응형 리팩토링 기록 — 프론트엔드 문서",
+        "src": "evidence/omagotchi/document-6.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/home-bottom-hud-refactor.md"
+      },
+      {
+        "title": "Home UI React Island 리팩토링 기록",
+        "src": "evidence/omagotchi/document-7.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/home-react-island-refactor.md"
+      },
+      {
+        "title": "홈 반응형 레이아웃 리팩터링 기록 — 프론트엔드 문서",
+        "src": "evidence/omagotchi/document-8.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/home-responsive-layout-refactor.md"
+      },
+      {
+        "title": "Home UI 전환 검토 기록",
+        "src": "evidence/omagotchi/document-9.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/home-ui-decision-history.md"
+      },
+      {
+        "title": "백엔드 연동 전 UI 통합 리팩토링 기록",
+        "src": "evidence/omagotchi/document-10.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/pre-backend-ui-integration-2026-08-14.md"
+      },
+      {
+        "title": "Storybook 공통 UI·화면 Pattern 리팩토링 기록 — 프론트엔드 문서",
+        "src": "evidence/omagotchi/document-11.txt",
+        "original": "design/frontend-docs/home-ui/04-work-records/storybook-ui-pattern-refactor.md"
+      },
+      {
+        "title": "Figma Prototype",
+        "src": "evidence/omagotchi/document-12.txt",
+        "original": "design/work-notes/009_Figma_Prototype.md"
+      },
+      {
+        "title": "UI/UX 리빌딩 기록",
+        "src": "evidence/omagotchi/document-13.txt",
+        "original": "design/work-notes/014_UI_UX_리빌딩_기록.md"
+      },
+      {
+        "title": "홈 화면 단일 뷰 리뉴얼",
+        "src": "evidence/omagotchi/document-14.txt",
+        "original": "design/work-notes/082_홈_화면_단일_뷰_리뉴얼.md"
+      },
+      {
+        "title": "Home UI의 화면 비율 대응 한계와 React Island 도입 배경",
+        "src": "evidence/omagotchi/document-15.txt",
+        "original": "design/work-notes/094_Home_UI의_화면_비율_대응_한계와_React_Island_도입_배경.md"
+      },
+      {
+        "title": "타이머 동일 버튼 역할 분리",
+        "src": "evidence/omagotchi/document-16.txt",
+        "original": "design/work-notes/116_타이머_동일_버튼_역할_분리.md"
+      },
+      {
+        "title": "타이머 역할 분리에 대한 고민",
+        "src": "evidence/omagotchi/document-17.txt",
+        "original": "design/work-notes/164_타이머_역할_분리에_대한_고민.md"
+      },
+      {
+        "title": "Home 하단 HUD 반응형 리팩토링 기록 — 개인 작업 기록",
+        "src": "evidence/omagotchi/document-18.txt",
+        "original": "design/work-notes/185_Home_하단_HUD_반응형_리팩토링_기록.md"
+      },
+      {
+        "title": "홈 반응형 레이아웃 리팩터링 기록 — 개인 작업 기록",
+        "src": "evidence/omagotchi/document-19.txt",
+        "original": "design/work-notes/186_홈_반응형_레이아웃_리팩터링_기록.md"
+      },
+      {
+        "title": "Storybook 공통 UI·화면 Pattern 리팩토링 기록 — 개인 작업 기록",
+        "src": "evidence/omagotchi/document-20.txt",
+        "original": "design/work-notes/188_Storybook_공통_UI·화면_Pattern_리팩토링_기록.md"
+      },
+      {
+        "title": "UI/UX 설계 근거와 개선 이력",
+        "src": "evidence/omagotchi/document-21.txt",
+        "original": "design-decisions.md"
+      },
+      {
+        "title": "프론트엔드 작업 회고 및 코드 품질 평가",
+        "src": "evidence/omagotchi/document-22.txt",
+        "original": "documents/frontend/frontend-retrospective-2026-09-08.md"
+      },
+      {
+        "title": "관리자 대시보드 패널 작성 가이드",
+        "src": "evidence/omagotchi/document-23.txt",
+        "original": "documents/frontend/guides/manager-dashboard-panel-guide.md"
+      },
+      {
+        "title": "AI 추천 퀘스트 완료 연동 인계서",
+        "src": "evidence/omagotchi/document-24.txt",
+        "original": "documents/frontend/integration/ai-quest-completion-handoff.md"
+      },
+      {
+        "title": "Frontend ↔ Backend 기능별 연결 지도",
+        "src": "evidence/omagotchi/document-25.txt",
+        "original": "documents/frontend/integration/frontend-backend-connection-map.md"
+      },
+      {
+        "title": "Gateway Presence 통합 검증 인계서 (2026-08-24)",
+        "src": "evidence/omagotchi/document-26.txt",
+        "original": "documents/frontend/integration/gateway-presence-handoff-2026-08-24.md"
+      },
+      {
+        "title": "Frontend Implementation Spec",
+        "src": "evidence/omagotchi/document-27.txt",
+        "original": "documents/frontend/specifications/frontend-implementation-spec.md"
+      },
+      {
+        "title": "팀명: Omagotchi",
+        "src": "evidence/omagotchi/document-28.txt",
+        "original": "documents/project/00-project/01-overview.md"
+      },
+      {
+        "title": "요구사항 관리",
+        "src": "evidence/omagotchi/document-29.txt",
+        "original": "documents/project/00-project/02-requirements.md"
+      },
+      {
+        "title": "MVP 및 구현 일정 로드맵",
+        "src": "evidence/omagotchi/document-30.txt",
+        "original": "documents/project/00-project/03-mvp-roadmap.md"
+      },
+      {
+        "title": "[ADR] Home UI - 모바일 전용 경로와 Viewport Redirect 폐기",
+        "src": "evidence/omagotchi/document-31.txt",
+        "original": "documents/project/30-adr/frontend/0001-deprecate-mobile-route-viewport-split.md"
+      },
+      {
+        "title": "[ADR] Home UI - React Island 기반 유동형 웹앱 스테이지 도입",
+        "src": "evidence/omagotchi/document-32.txt",
+        "original": "documents/project/30-adr/frontend/0002-home-ui-react-island-fluid-stage.md"
+      }
+    ],
+    "code": [
+      {
+        "title": "GameButton.jsx",
+        "src": "evidence/omagotchi/GameButton.jsx.txt"
+      },
+      {
+        "title": "GameButton.stories.jsx",
+        "src": "evidence/omagotchi/GameButton.stories.jsx.txt"
+      },
+      {
+        "title": "GameDialog.jsx",
+        "src": "evidence/omagotchi/GameDialog.jsx.txt"
+      },
+      {
+        "title": "GameField.jsx",
+        "src": "evidence/omagotchi/GameField.jsx.txt"
+      },
+      {
+        "title": "CharacterStage.jsx",
+        "src": "evidence/omagotchi/CharacterStage.jsx.txt"
+      }
+    ]
+  }
+}

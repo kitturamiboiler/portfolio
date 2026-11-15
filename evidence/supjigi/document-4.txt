@@ -1,0 +1,71 @@
+# 숲지기 성능 개선 — 로컬 검증 결과
+
+운영 배포·Git push는 하지 않았습니다. 기존 배치를 유지했고 전체 자료 검색과 스킬 배치 기능을 보존했습니다.
+
+## 초기 화면 구성량 비교
+
+변경 전 기존 로컬 산출물과 최종 정적 산출물의 실제 크기/요소 수입니다. 네트워크 시간 감소율이 아닙니다.
+
+|페이지|HTML 원본 전 → 후|초기 DOM 전 → 후|초기 목록|
+|---|---:|---:|---|
+|skills/index.html|365.9 → 166.2 KiB|2344 → 474|232개 → 24개, 전체 검색·더 보기 유지|
+|builder/index.html|561.3 → 410.7 KiB|2249 → 853|추천 52개 → 8개, 전체 검색·더 보기 유지|
+
+검색 인덱스: 기존 682,243바이트 → 624,176바이트. 검색 본문은 유지하고 목록에 불필요한 출처 메타데이터만 제외했습니다. 개별 문서의 출처·검증 상태는 그대로입니다.
+
+## 이미지 전송량
+
+|이미지|기존 PNG|새 WebP|
+|---|---:|---:|
+|assets/growth/bed-xp.png|885,641 B|79,970 B|
+|assets/growth/blessing-levels.png|468,678 B|70,772 B|
+|assets/updates/2026-11-08/mobile-build.png|661,422 B|80,172 B|
+|assets/updates/2026-11-08/mobile-picker.png|834,965 B|104,600 B|
+|assets/updates/2026-11-08/android-install.png|372,068 B|42,096 B|
+
+기존 PNG URL은 이전 문서·공유 링크 호환을 위해 남겼습니다. 변경된 화면에서는 새 WebP를 참조합니다.
+
+## 최종 로컬 Lighthouse
+
+실제 Chrome, localhost 정적 빌드, 기본 모바일 프로필 1회입니다. 운영·한국 실물 폰의 결과가 아니며 변경 전의 동등한 로컬 Lighthouse가 없어 전후 속도 비교로 사용할 수 없습니다. 최초 변경 전 Lighthouse는 로컬 서버 격리로 접속하지 못했습니다.
+
+|페이지|점수|LCP|TBT|CLS|
+|---|---:|---:|---:|---:|
+|skills|98|1.89s|78ms|0|
+|builder|86|3.22s|65ms|0|
+|search|95|1.06s|251ms|0|
+
+## 검증
+
+- npm run check: 타입 검사 및 기존 테스트 6개 통과
+- npm run build: Static Export 유지, 339 HTML 생성
+- check-export: 23,034개 링크·자산 참조 검사 통과
+- 버전 검색 JSON의 파일명/내용/페이지 참조 일치 확인
+- sitemap과 업데이트 노트 파일 생성 확인
+- Chrome: 도감 최초 24개 통과
+- Chrome: 더 보기·뒤로 가기 목록/스크롤 복원 통과
+- Chrome: 처음 표시되지 않은 항목 전체 검색 통과
+- Chrome: 다른 도감 필터 분리 통과
+- Chrome: 모바일 스킬 선택창 최초 열기·재열기·배치 통과
+- Chrome: 추천 전체 검색·더 보기·PvP 적용 통과
+- Chrome: 지연 분리한 이미지 저장·PNG 다운로드 통과
+- Chrome: 통합 검색 결과 더 보기 통과
+- Chrome: 버전 검색 인덱스·URL 검색어 통과
+- Chrome: 검색 이스터에그 유지 통과
+- Chrome: 모바일 가로 넘침 없음 통과
+- Chrome: PC 배치·추가 버튼·드래그앤드롭 유지 통과
+
+## 캐시·갱신
+
+해시가 붙은 JS/CSS와 내용 해시로 이름을 정한 검색 JSON에만 장기 캐시 규칙을 추가했습니다. HTML·서비스워커·기존 고정 URL 검색 JSON의 갱신 정책은 유지합니다. 이전 해시 파일을 못 찾을 때는 기존 검색 JSON을 읽습니다. [Cloudflare Pages 헤더 설정 기준](https://developers.cloudflare.com/pages/configuration/headers/)
+
+로컬 미리보기 서버는 Cloudflare의 _headers를 해석하지 않으므로 실제 운영 응답 헤더는 배포 후 별도 확인해야 합니다.
+
+## 로컬 미리보기
+
+- http://127.0.0.1:3311/skills/
+- http://127.0.0.1:3311/builder/
+- http://127.0.0.1:3311/search/
+- http://127.0.0.1:3311/updates/2026-11-13-performance/
+
+브라우저 실측 원본은 final-*.json, 기능 검증은 browser-qa.json, 미리보기 스크린샷과 실제 저장 PNG도 같은 폴더에 있습니다.

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" font-family="Malgun Gothic, Noto Sans KR, sans-serif">
+<rect width="1280" height="720" fill="#f8f7f3"/>
+<path d="M0 0h1280v80H0Z" fill="white"/><path d="M0 80h1280" stroke="#dce2d9"/>
+<text x="24" y="51" fill="#293f35" font-size="32" font-weight="600">Voice Tale</text>
+<g fill="none" stroke="#63756a" stroke-width="2.5" stroke-linecap="round"><path d="M1062 33q13-12 26 0m-22 6q9-8 18 0m-14 6q5-5 10 0m-5 7h.1"/></g>
+<rect x="1112" y="8" width="64" height="64" rx="14" fill="#e8efe5"/>
+<g fill="none" stroke="#293f35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1144 28v28m0-28q-9-6-16-2v25q8-3 16 5 8-8 16-5V26q-7-4-16 2Z"/><circle cx="1223" cy="40" r="12"/><circle cx="1223" cy="40" r="5"/><path d="M1223 22v6m0 24v6m-18-18h6m24 0h6m-31-13 5 5m16 16 5 5m0-26-5 5m-16 16-5 5"/></g>
+<rect x="24" y="104" width="604" height="592" rx="20" fill="#e8efe5" stroke="#b9cbb9"/>
+<rect x="652" y="104" width="604" height="592" rx="20" fill="#f0ebf5" stroke="#d5cadf"/>
+<!-- Lucide AudioLines / BookImage 형태의 선 아이콘 -->
+<g transform="translate(266 250) scale(5)" fill="none" stroke="#4f755c" stroke-width="1.5" stroke-linecap="round"><path d="M2 10v4m4-7v10m4-14v18m4-18v18m4-14v10m4-7v4"/></g>
+<g transform="translate(894 250) scale(5)" fill="none" stroke="#756088" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><circle cx="10" cy="8" r="1.5"/><path d="m20 13-4-4-7 8"/></g>
+<g fill="#293f35" text-anchor="middle" font-size="44" font-weight="600"><text x="326" y="464">음성 동화</text><text x="954" y="464">창작 동화</text></g>
+<g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g stroke="#4f755c"><circle cx="326" cy="582" r="28"/><path d="M314 582h24m-9-9 9 9-9 9"/></g><g stroke="#756088"><circle cx="954" cy="582" r="28"/><path d="M942 582h24m-9-9 9 9-9 9"/></g></g>
+</svg>

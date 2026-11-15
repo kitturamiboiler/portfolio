@@ -1,0 +1,31 @@
+# UI/UX Portfolio
+
+세 프로젝트의 실제 화면과 설계 근거로 구성한 한국어 정적 포트폴리오입니다.
+
+## 로컬 실행
+
+Node.js 18 이상에서 `npm run build`, `npm run dev`를 실행한 다음 http://127.0.0.1:4173 을 엽니다. 의존성 설치는 필요하지 않습니다. `npm test`로 페이지와 로컬 링크를 검사합니다.
+
+## 수정
+
+- `data.mjs`: 계정명, 프로젝트 설명과 이미지, 캡션
+- `build.mjs`, `render.mjs`: 홈·상세·문서 페이지 구성
+- `case-notes.mjs`: 담당 역할, 설계 판단과 추가 사례
+- `evidence-manifest.json`: 화면 68개와 문서 39개 자료 목록
+- `prepare-evidence.mjs`: 제공 자료에서 이미지와 문서 복사본을 준비하는 선택적 도구. 이미 준비된 파일이 있어 평소 빌드에는 실행할 필요가 없습니다.
+- `style.css`: 반응형 스타일
+- `assets/`: 제공 자료에서 복사한 선별 이미지. 원본은 수정하지 않았습니다.
+
+변경 후 `npm run build`를 실행하면 홈과 `projects/`의 상세 HTML을 갱신합니다. 생성 HTML은 JavaScript 없이도 읽을 수 있고, JavaScript는 대표 프로젝트 전환과 이미지 확대에 사용됩니다. Google Fonts는 온라인에서 로드되며 오프라인에서는 기본 글꼴로 표시됩니다.
+
+각 사례 하단에서 화면 68개와 문서 39개를 열람할 수 있습니다. Omagotchi에는 컴포넌트 코드 5개도 포함했습니다. 본문 도식·상태표는 제공 자료를 바탕으로 새로 정리한 설명 자료이며, 원본 Figma나 새 사용자 조사 결과가 아닙니다. 원본 문서는 HTML을 실행하지 않고 텍스트로 변환하며 로컬 경로·이메일을 생략합니다.
+
+## GitHub Pages
+
+검토한 뒤 `index.html`, `projects/`, `assets/`, `evidence/`, `style.css`, `app.js`, `favicon.svg`, `.nojekyll`을 Pages 저장소 루트에 올리고 Settings → Pages에서 해당 브랜치의 root를 선택합니다. 상대 경로를 사용해 사용자 사이트와 프로젝트 사이트 모두 대응합니다. 공개 저장소는 https://github.com/kitturamiboiler/portfolio 이며, Pages 주소는 https://kitturamiboiler.github.io/portfolio/ 입니다. main 브랜치 루트에서 배포합니다.
+
+## 공개 전 확인
+
+표시 이름은 문재민, 별칭은 m00n · 키투라미입니다. 역할 설명은 본인 답변을 반영했습니다. Omagotchi는 프론트엔드 전반·백엔드 레벨 디자인·캐릭터 제작 및 저작권, GIST는 Figma 레이아웃·베리언트와 프론트엔드 UI, 숲지기는 AI 활용 구현과 UI 검토입니다. 연락처는 본인이 공개용으로 제공한 mjm3204@naver.com 입니다. 수상과 사용자 성과 수치는 추가하지 않았습니다. 제공 캡처 속 타사 게임 이미지와 팀 자료의 공개 가능 범위는 제출 전에 확인해주세요.
+
+Omagotchi의 대표 화면은 2026.11.15 omagotchi.site에서 직접 촬영한 운영 UI입니다. 데스크톱 홈·모바일 홈·내 정보·모바일 퀘스트 4개를 선별했으며, 패널은 원본 영역만 잘라 사용했습니다. 초기 시안과 Storybook은 별도 기록으로 구분합니다.

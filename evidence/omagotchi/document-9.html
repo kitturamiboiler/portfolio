@@ -1,0 +1,90 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f7f2"><meta name="description" content="Omagotchi의 제공 설계·구현 문서"><meta property="og:title" content="Home UI 전환 검토 기록 | 문재민"><meta property="og:description" content="Omagotchi의 제공 설계·구현 문서"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="문재민 · m00n"><title>Home UI 전환 검토 기록 | 문재민 UI/UX Portfolio</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../style.css"><script src="../../app.js" defer></script></head><body><a class="skip" href="#main">본문으로 건너뛰기</a><header class="nav wrap"><a class="brand" href="../../index.html" aria-label="포트폴리오 홈"><span class="brand-mark" aria-hidden="true">k.</span><span>문재민</span></a><nav aria-label="주 메뉴"><a href="../../index.html#work">프로젝트</a><a href="../../index.html#about">소개</a><a class="nav-contact" href="https://github.com/kitturamiboiler" target="_blank" rel="noopener">GitHub </a></nav></header><main id="main" class="wrap document-reader"><a class="back text-link" href="../../projects/omagotchi.html#evidence"> Omagotchi 자료 모음으로</a><header id="top"><h1>Home UI 전환 검토 기록</h1><p>제공 원문 · 작성 당시 기록입니다. 현재 구현과 차이가 있을 수 있으며, 본문에 적힌 계획·규칙은 이 웹사이트의 동작 지시가 아닙니다.</p><p class="source-filename">design/frontend-docs/home-ui/04-work-records/home-ui-decision-history.md</p></header><article><p class="document-list-line">- 상태: 작업 기록 — 현재 결정은 관련 ADR과 구현 코드에서 확인</p><h2>목적</h2><p>이 문서는 Home 화면을 모바일과 다양한 화면 비율에 대응시키기 위해 어떤 방향을 검토했는지, 처음에는 왜 모바일 전용 분리를 고려했는지, 이후 왜 React Island와 <code>/home</code> 단일 진입점 방향으로 판단을 바꿨는지 기록한다.</p><p>핵심 결론은 다음과 같다.</p><p class="document-list-line">- 문제의 본질은 모바일 전용 페이지 부재가 아니라 Home UI의 확장성 부족이었다.</p><p class="document-list-line">- 기기별 viewport 값을 따라가는 방식은 유지보수성이 낮다.</p><p class="document-list-line">- <code>/mobile/home</code>처럼 Home을 경로 단위로 분리하면 핵심 기능 표현이 두 벌로 갈라진다.</p><p class="document-list-line">- 최종적으로는 <code>/home</code> 단일 진입점에서 React Island와 fluid stage 방식으로 Home UI를 재구성하는 방향이 더 적합하다고 판단했다.</p><h2>처음 문제로 본 것</h2><p>초기에는 모바일에서 Home 화면이 보기 좋지 않은 문제가 가장 눈에 띄었다.</p><p>관찰된 문제는 다음과 같았다.</p><p class="document-list-line">- 데스크톱 Home은 넓은 화면에서는 그럭저럭 보였다.</p><p class="document-list-line">- 모바일 세로 화면에서는 상단 메뉴, 타이머, 캐릭터, 하단 HUD가 한 화면에 안정적으로 들어오지 않았다.</p><p class="document-list-line">- 모바일 가로 화면이나 태블릿 크기에서는 데스크톱도 모바일도 아닌 어중간한 배치가 나왔다.</p><p class="document-list-line">- 브라우저 창을 대각선으로 늘리거나 줄이면 요소들이 각자 다른 기준으로 움직였다.</p><p class="document-list-line">- 특정 viewport 하나에서 맞춘 CSS가 다른 viewport에서는 다시 깨졌다.</p><p>그래서 처음에는 문제를 이렇게 해석했다.</p><p>데스크톱 화면은 그대로 두고, 모바일 화면만 별도로 만들면 된다.</p><p>이 해석 때문에 <code>/mobile/home</code> 같은 모바일 전용 화면을 먼저 고려했다.</p><h2>React 이전에 고려했던 1차 방향</h2><p>처음 계획은 Spring MVC + Thymeleaf 구조를 유지한 채 모바일 전용 view를 추가하는 것이었다.</p><p>예상 구조는 다음과 같았다.</p><pre><code>flowchart TD
+      A[&quot;사용자 진입&quot;] --&gt; B{&quot;브라우저 viewport 확인&quot;}
+      B --&gt;|&quot;넓은 화면&quot;| C[&quot;/home&quot;]
+      B --&gt;|&quot;좁은 화면&quot;| D[&quot;/mobile/home&quot;]
+      D --&gt; E[&quot;모바일 전용 Home view&quot;]
+      C --&gt; F[&quot;기존 Home view&quot;]
+</code></pre><p>이 방식의 기대 효과는 명확했다.</p><p class="document-list-line">- 기존 데스크톱 Home을 크게 건드리지 않아도 된다.</p><p class="document-list-line">- 모바일 화면을 빠르게 실험할 수 있다.</p><p class="document-list-line">- 모바일 전용 배치를 별도 CSS로 자유롭게 만들 수 있다.</p><p class="document-list-line">- QA에서 <code>/mobile/home</code>만 직접 열어 확인하기 쉽다.</p><p>그래서 실제로 다음과 같은 시도를 했다.</p><p class="document-list-line">- 모바일 전용 컨트롤러 추가</p><p class="document-list-line">- 모바일 전용 Home 템플릿 추가</p><p class="document-list-line">- 모바일 전용 Character Selector 템플릿 추가</p><p class="document-list-line">- 모바일 전용 CSS와 JS 추가</p><p class="document-list-line">- viewport 폭에 따라 <code>/home</code>과 <code>/mobile/home</code>을 오가게 하는 client-side redirect 시도</p><h2>원래 생각했던 분기 방식</h2><p>초기 분기 아이디어는 브라우저 viewport 폭을 기준으로 화면을 나누는 방식이었다.</p><p>서버는 사용자의 실제 브라우저 크기를 알 수 없으므로, 클라이언트에서 먼저 viewport를 판단하고 필요한 경우 경로를 바꾸는 방식을 생각했다.</p><pre><code>sequenceDiagram
+    participant Browser
+    participant Spring as Spring MVC
+    participant View as Thymeleaf View
+    participant JS as Viewport Guard JS
+
+    Browser-&gt;&gt;Spring: GET /home
+    Spring-&gt;&gt;View: pages/app/home.html 렌더링
+    View--&gt;&gt;Browser: HTML 응답
+    Browser-&gt;&gt;JS: viewport guard 실행
+    JS-&gt;&gt;JS: window.matchMedia로 폭 확인
+    alt mobile width
+        JS-&gt;&gt;Browser: location.replace(&#39;/mobile/home&#39;)
+        Browser-&gt;&gt;Spring: GET /mobile/home
+        Spring--&gt;&gt;Browser: pages/mobile/home.html
+    else desktop width
+        JS-&gt;&gt;Browser: /home 유지
+    end
+</code></pre><p>이 방식은 기술적으로는 가능했다. 하지만 실제 검토하면서 다음 문제가 생겼다.</p><h2>왜 이 방향이 틀렸다고 판단했는가</h2><h3>1. 문제의 본질이 route 분리가 아니었다</h3><p>실제 화면을 계속 확인해보니 모바일만 문제가 아니었다.</p><p>데스크톱 Home도 화면 비율이 바뀌면 어색해졌다. 즉 <code>/mobile/home</code>을 잘 만들어도 <code>/home</code> 자체가 다양한 화면 비율을 견디지 못하는 문제는 그대로 남았다.</p><pre><code>flowchart TD
+      A[&quot;처음 판단: 모바일 화면이 없다&quot;] --&gt; B[&quot;/mobile/home을 만들자&quot;]
+      B --&gt; C[&quot;모바일 화면 일부는 개선&quot;]
+      C --&gt; D[&quot;하지만 PC Home은 여전히 화면비 변화에 취약&quot;]
+      D --&gt; E[&quot;문제 재정의&quot;]
+      E --&gt; F[&quot;Home 자체에 fluid layout model이 없다&quot;]
+</code></pre><h3>2. Home 기능이 두 벌로 갈라진다</h3><p>Home은 단순 소개 페이지가 아니라 서비스의 핵심 기능이 모인 화면이다.</p><p class="document-list-line">- 타이머</p><p class="document-list-line">- 캐릭터</p><p class="document-list-line">- 경험치와 레벨</p><p class="document-list-line">- 출석</p><p class="document-list-line">- BGM</p><p class="document-list-line">- 재실 인원</p><p class="document-list-line">- 채팅</p><p class="document-list-line">- 메뉴 오버레이</p><p><code>/home</code>과 <code>/mobile/home</code>을 나누면 이 기능들의 표현과 DOM 계약을 두 벌로 관리해야 한다.</p><pre><code>flowchart LR
+    A[Home 기능] --&gt; B[PC Home DOM]
+    A --&gt; C[Mobile Home DOM]
+
+    B --&gt; D[home.js 연결]
+    C --&gt; E[mobile/home.js 연결]
+
+    D --&gt; F[기능 변경 시 PC 반영]
+    E --&gt; G[기능 변경 시 Mobile 반영]
+
+    F --&gt; H[중복 유지보수]
+    G --&gt; H
+</code></pre><p>이 구조는 처음에는 빠르게 보이지만, 기능이 조금만 늘어나도 PC와 Mobile의 UI/JS/API 연결이 서로 어긋날 가능성이 크다.</p><h3>3. viewport redirect는 책임 경계가 애매했다</h3><p>로그인, 회원가입, 출석 완료 같은 흐름은 서버 인증과 페이지 라우팅에 가깝다. 그런데 클라이언트 viewport script가 중간에서 경로를 바꾸기 시작하면 다음과 같은 애매한 상태가 된다.</p><p class="document-list-line">- 서버는 <code>/home</code>으로 보냈지만 브라우저가 <code>/mobile/home</code>으로 다시 이동한다.</p><p class="document-list-line">- 화면 폭이 바뀌면 같은 사용자가 다른 경로에 있을 수 있다.</p><p class="document-list-line">- 인증 흐름과 UI 표시 정책이 분리되지 않고 섞인다.</p><p class="document-list-line">- <code>/home</code>이라는 핵심 진입점의 의미가 약해진다.</p><pre><code> flowchart TD
+      A[&quot;로그인 성공&quot;] --&gt; B[&quot;서버: /home redirect&quot;]
+      B --&gt; C[&quot;브라우저: /home 로드&quot;]
+      C --&gt; D[&quot;viewport guard 실행&quot;]
+      D --&gt;|&quot;mobile&quot;| E[&quot;/mobile/home으로 재이동&quot;]
+      D --&gt;|&quot;desktop&quot;| F[&quot;/home 유지&quot;]
+
+      E --&gt; G[&quot;서버 라우팅 의도와 클라이언트 표시 정책이 섞임&quot;]
+</code></pre><p>이 방식은 인증/인가 코드를 직접 바꾸지는 않더라도, 페이지 흐름을 클라이언트에서 다시 해석하게 만든다. 장기적으로는 추적하기 어려운 흐름이 될 가능성이 높다.</p><h3>4. 기기별 하드코딩 방향으로 흘러갔다</h3><p>처음에는 QA 기준으로 몇 가지 viewport를 정했다.</p><p class="document-list-line">- 360 x 780</p><p class="document-list-line">- 393 x 852</p><p class="document-list-line">- 430 x 932</p><p class="document-list-line">- 886 x 670</p><p>하지만 실제 구현 중에는 이 값들이 검증 샘플이 아니라 구현 기준처럼 사용되기 시작했다. 이러면 새 기기나 다른 브라우저 크기가 나올 때마다 새 CSS 보정이 필요해진다.</p><pre><code>flowchart TD
+    A[360x780에서 깨짐] --&gt; B[360 전용 CSS 보정]
+    B --&gt; C[430x932에서 깨짐]
+    C --&gt; D[430 전용 CSS 보정]
+    D --&gt; E[886x670에서 깨짐]
+    E --&gt; F[886 전용 CSS 보정]
+    F --&gt; G[새 화면 크기 등장]
+    G --&gt; A
+</code></pre><p>이 방식은 반응형 설계가 아니라 화면 크기 추적에 가깝다.</p><h2>React를 고려하게 된 이유</h2><p>React를 고려한 이유는 단순히 최신 기술을 쓰기 위해서가 아니다.</p><p>Home 화면은 여러 UI 상태가 한 화면 안에서 동시에 움직인다. 기존 방식처럼 긴 HTML과 여러 <code>querySelector</code> 기반 JS가 커지면, UI 단위와 상태 단위가 서로 흩어진다.</p><p>React를 쓰면 다음 단위로 나눌 수 있다.</p><pre><code>flowchart TD
+    A[HomeApp] --&gt; B[TopMenu]
+    A --&gt; C[TimerPanel]
+    A --&gt; D[CharacterStage]
+    A --&gt; E[HudBar]
+    A --&gt; F[ActionDock]
+    A --&gt; G[BgmPanel]
+    A --&gt; H[PresenceHud]
+    A --&gt; I[OverlayLayer]
+</code></pre><p>이 구조는 Home UI를 의미 단위로 관리하기 좋다.</p><p>오버레이도 같은 이유로 React 전환 대상이다. 현재는 기존 <code>home.js</code>의 문자열 템플릿과 이벤트 위임이 남아 있으므로 즉시 전부 옮기기보다, 먼저 시각 스타일과 화면 비율 대응을 정리하고 이후 도움말, 진행, 커뮤니티, 공간처럼 기능 단위로 React 컴포넌트화한다.</p><p>다만 기존 기능을 한 번에 React 상태로 옮기는 것은 위험하다고 판단했다. 이미 <code>home.js</code>에는 타이머, 캐릭터, 레벨, 출석, BGM, 재실 인원, 오버레이 동작이 들어 있기 때문이다.</p><p>그래서 전체 React 전환이 아니라 React Island 방식을 선택했다.</p><h2>최종 선택한 방향</h2><p>최종 방향은 다음과 같다.</p><pre><code>  flowchart TD
+      A[&quot;사용자 진입&quot;] --&gt; B[&quot;/home&quot;]
+      B --&gt; C[&quot;Thymeleaf home shell&quot;]
+      C --&gt; D[&quot;React Home Island 렌더링&quot;]
+      D --&gt; E[&quot;기존 data-* DOM 계약 생성&quot;]
+      E --&gt; F[&quot;기존 home.js 실행&quot;]
+      F --&gt; G[&quot;타이머 / 캐릭터 / 출석 / BGM / 오버레이 동작 유지&quot;]
+
+      D --&gt; H[&quot;fluid stage CSS&quot;]
+      H --&gt; I[&quot;세로 / 가로 / 낮은 높이 대응&quot;]
+</code></pre><p>핵심은 <code>/home</code>을 유지하면서 Home UI만 컴포넌트화하는 것이다.</p><p>서버 흐름은 그대로 둔다.</p><pre><code>sequenceDiagram
+    participant Browser
+    participant Spring as Spring MVC
+    participant React as React Island
+    participant HomeJS as existing home.js
+
+    Browser-&gt;&gt;Spring: GET /home
+    Spring--&gt;&gt;Browser: home.html shell
+    Browser-&gt;&gt;React: home-app.js 실행
+    React--&gt;&gt;Browser: Home UI DOM 렌더링
+    Browser-&gt;&gt;HomeJS: home.js 실행
+    HomeJS-&gt;&gt;Browser: 기존 data-* DOM에 기능 연결
+</code></pre><h2>선택을 신뢰한 이유</h2><p>이 판단을 신뢰한 이유는 다음과 같다.</p><p>첫째, Home은 서비스의 핵심 화면이므로 PC와 Mobile로 기능 표현을 두 벌 관리하면 장기 비용이 크다.</p><p>둘째, 문제는 특정 모바일 화면 하나가 아니라 Home 전체의 레이아웃 모델 문제였다. 따라서 <code>/mobile/home</code>을 잘 만드는 것보다 <code>/home</code> 자체를 확장 가능한 stage로 바꾸는 편이 더 근본적이다.</p><p>셋째, React Island는 기존 기능을 모두 버리지 않으면서 UI 구조만 먼저 정리할 수 있는 중간 단계다. 즉 리스크를 줄이면서도 다음 단계로 갈 수 있는 구조다.</p><p>넷째, 인증/인가/JWT/세션 같은 서버 소유 영역을 건드리지 않는다. 프론트 표현 계층 안에서만 문제를 해결한다.</p><h2>폐기한 실험 산출물</h2><p>다음 실험은 방향을 바꾸면서 제거했다.</p><p class="document-list-line">- 모바일 전용 Home 컨트롤러</p><p class="document-list-line">- 모바일 전용 Home 템플릿</p><p class="document-list-line">- 모바일 전용 Character Selector 템플릿</p><p class="document-list-line">- 모바일 전용 CSS</p><p class="document-list-line">- 모바일 전용 JS</p><p class="document-list-line">- viewport 기반 client-side route guard</p><p class="document-list-line">- check-in 이후 viewport 기준 Home 이동 resolver</p><p>이 실험은 실패한 작업이라기보다, 문제를 더 정확히 정의하기 위한 탐색 단계였다. 결과적으로 이 시도를 통해 &quot;모바일 페이지 분리&quot;가 아니라 &quot;Home 자체의 fluid stage화&quot;가 필요하다는 판단에 도달했다.</p><h2>앞으로의 작업 기준</h2><p>앞으로 Home UI 작업은 다음 원칙을 따른다.</p><p class="document-list-line">- <code>/home</code>을 단일 Home 진입점으로 유지한다.</p><p class="document-list-line">- 기기 모델이나 특정 viewport 값 기준으로 구현하지 않는다.</p><p class="document-list-line">- 화면 비율과 가용 공간 기준으로 레이아웃 모드를 나눈다.</p><p class="document-list-line">- 기존 <code>home.js</code>의 DOM 계약을 깨지 않는다.</p><p class="document-list-line">- React로 기능을 옮길 때는 UI 단위가 아니라 기능 단위로 작게 옮긴다.</p><p class="document-list-line">- 오버레이는 <code>data-home-overlay</code> 진입 계약을 유지하고, 내부 화면은 React 컴포넌트와 API/helper 분리 구조로 점진 이전한다.</p><p class="document-list-line">- 인증/인가/JWT/세션 흐름은 이 작업 범위에서 다루지 않는다.</p><h2>관련 문서</h2><p class="document-list-line">- Home UI React Island 리팩토링 기록</p><p class="document-list-line">- React Island 학습·작업 로드맵</p></article><a class="text-link" href="document-9.txt" target="_blank" rel="noopener">텍스트 원문 보기 </a></main><footer class="wrap footer"><a class="brand" href="../../index.html" aria-label="포트폴리오 홈"><span class="brand-mark" aria-hidden="true">k.</span><span>문재민</span></a><p>UI/UX Portfolio © 2026 문재민</p><a href="#top">맨 위로 </a></footer></body></html>

@@ -1,0 +1,17 @@
+# Figma Prototype
+
+> 원문: [Figma Prototype](https://app.notion.com/p/ba46cc49e87c82a6bdcd0171fa8d189f)
+> 원문 위치: 내 / 게이미피케이션 (문잼) (1) / UI / UX
+> 수집일: 2026-09-05 · 문서 수정 시각은 원래 작성일과 다를 수 있습니다.
+
+[전체 목차](../../00_읽어주세요.md)
+
+---
+진행도 체크와 실시간 공유가 가능한 임베딩으로 진행도 표시
+---
+
+- [UI,UX 공부](../../페이지별/01_UI_UX/034_UI,UX_공부.md)
+[www.figma.com](https://www.figma.com/design/pNLaUrQG0VxDHsaeQQS53q/Omagotchi?node-id=57-610&t=SAIpVejP5F7XiLoV-1)
+---
+<unknown url="https://app.notion.com/p/ba46cc49e87c82a6bdcd0171fa8d189f#5916cc49e87c8337a9cc81977db00fff" alt="figma"/>
+---

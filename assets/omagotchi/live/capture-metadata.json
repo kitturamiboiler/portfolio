@@ -1,0 +1,22 @@
+{
+  "source": "https://omagotchi.site/home",
+  "date": "2026-11-15",
+  "kind": "authenticated live production UI",
+  "selected": [
+    "desktop-home.jpg",
+    "desktop-profile.png",
+    "mobile-home.jpg",
+    "mobile-quests.png"
+  ],
+  "processing": "Panel screenshots cropped without resizing or sharpening. Full home screenshots retain original dimensions. Rejected captures excluded.",
+  "viewports": {
+    "desktop": [
+      1280,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f7f2"><meta name="description" content="Omagotchi의 제공 설계·구현 문서"><meta property="og:title" content="Home React·Storybook 구조 가이드 | 문재민"><meta property="og:description" content="Omagotchi의 제공 설계·구현 문서"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:site_name" content="문재민 · m00n"><title>Home React·Storybook 구조 가이드 | 문재민 UI/UX Portfolio</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../style.css"><script src="../../app.js" defer></script></head><body><a class="skip" href="#main">본문으로 건너뛰기</a><header class="nav wrap"><a class="brand" href="../../index.html" aria-label="포트폴리오 홈"><span class="brand-mark" aria-hidden="true">k.</span><span>문재민</span></a><nav aria-label="주 메뉴"><a href="../../index.html#work">프로젝트</a><a href="../../index.html#about">소개</a><a class="nav-contact" href="https://github.com/kitturamiboiler" target="_blank" rel="noopener">GitHub </a></nav></header><main id="main" class="wrap document-reader"><a class="back text-link" href="../../projects/omagotchi.html#evidence"> Omagotchi 자료 모음으로</a><header id="top"><h1>Home React·Storybook 구조 가이드</h1><p>제공 원문 · 작성 당시 기록입니다. 현재 구현과 차이가 있을 수 있으며, 본문에 적힌 계획·규칙은 이 웹사이트의 동작 지시가 아닙니다.</p><p class="source-filename">design/frontend-docs/home-ui/01-guides/home-react-storybook-structure.md</p></header><article><p class="document-list-line">- 작성일: 2026-08-13</p><p class="document-list-line">- 상태: 현재 구현·개발 가이드</p><p class="document-list-line">- 대상: Home React Island와 Storybook을 수정하는 Frontend 팀원</p><h2>목적</h2><p>Home React 소스, Story, CSS, 기존 JavaScript와 빌드 산출물의 위치와 책임을 고정한다. 신규 UI를 추가할 때 파일이 여러 디렉터리에 흩어지거나 Storybook mock이 실제 Home에 섞이지 않도록 이 문서를 기준으로 작업한다.</p><h2>기준 디렉터리</h2><pre><code>view/
+├── .storybook/
+│   ├── main.js                         Story 검색 경로·정적 리소스·Addon 설정
+│   └── preview.jsx                     실제 Home 공통 CSS 로드 순서
+├── docs/
+│   ├── home-ui/
+│   │   ├── README.md                    Home UI 문서 인덱스
+│   │   ├── 01-guides/                   현재 개발 가이드
+│   │   ├── 02-checklists/               실행 순서·완료 조건
+│   │   ├── 03-research/                 도구·구조 검토와 조사
+│   │   └── 04-work-records/             리팩토링·변경 기록
+│   └── adr/0003-react-game-ui-tools-incremental-adoption.md
+├── src/main/frontend/home-react/
+│   ├── main.jsx                        React mount·Home overlay store
+│   └── components/
+│       ├── ComponentName.jsx           실제 Home에서 사용하는 UI
+│       └── ComponentName.stories.jsx   같은 UI의 Storybook 상태
+├── src/main/frontend/ui/
+│   ├── GameButton.jsx                  화면 공통 기초 UI
+│   ├── GameDialog.jsx                  Radix Dialog·Motion 공통 shell
+│   ├── GameTabs.jsx                    Radix Tabs 공통 전환 UI
+│   ├── AttendanceBook.jsx              출석 Pattern·실제 DOM 디자인 기준
+│   ├── AuthScreen.jsx                  인증 Pattern·Thymeleaf 디자인 기준
+│   ├── HomeMenuPanel.jsx               Home 메뉴 Pattern·실제 내용 표현 어댑터
+│   └── *.stories.jsx                   공통 UI 상태·반응형 검증
+├── src/main/resources/
+│   ├── templates/pages/app/home.html   Home 진입점·script 로드 순서
+│   └── static/
+│       ├── css/home/                   Home UI·반응형·패널 CSS
+│       ├── css/ui/design-system.css    공통 색상 토큰·UI Pattern CSS
+│       ├── images/                     Storybook도 함께 사용하는 정적 에셋
+│       └── js/
+│           ├── home.js                 기존 Home 기능 조립
+│           ├── home/                   BGM·출석 등 기능 Controller
+│           └── home-react/             Home·캐릭터 선택 Vite 생성물과 공통 chunk
+├── package.json                        npm·Storybook 실행 명령
+└── vite.config.js                      React entry와 산출물 경로
+</code></pre><p><code>node_modules/</code>와 <code>storybook-static/</code>은 로컬 설치·빌드 결과이므로 Git에 추가하지 않는다.</p><h2>파일별 책임</h2><div class="table-scroll" tabindex="0" role="region" aria-label="원문 표"><table><caption>원문 표</caption><thead><tr><th scope="col">위치</th><th scope="col">책임</th><th scope="col">직접 수정</th></tr></thead><tbody><tr><th scope="row"><code>src/main/frontend/home-react/components/*.jsx</code></th><td>UI DOM, props, 접근성 속성</td><td>가능</td></tr><tr><th scope="row">같은 폴더의 <code>*.stories.jsx</code></th><td>상태별 예제와 Storybook 전용 데이터</td><td>가능</td></tr><tr><th scope="row"><code>src/main/frontend/ui/*.jsx</code></th><td>여러 사용자 화면에서 쓸 공통 UI·Pattern</td><td>가능</td></tr><tr><th scope="row"><code>src/main/resources/static/css/ui/design-system.css</code></th><td>공통 색상 토큰·컴포넌트 외형·반응형</td><td>가능</td></tr><tr><th scope="row"><code>src/main/frontend/home-react/main.jsx</code></th><td>React root mount, 전역 overlay store</td><td>필요한 경우만</td></tr><tr><th scope="row"><code>src/main/frontend/character-selector/**</code></th><td>캐릭터 선택 화면, Story와 실제 mount</td><td>가능</td></tr><tr><th scope="row"><code>src/main/resources/static/css/home/*.css</code></th><td>실제 Home과 Storybook이 공유하는 외형·반응형</td><td>가능</td></tr><tr><th scope="row"><code>src/main/resources/static/js/home.js</code></th><td>기존 기능 Controller 연결</td><td>계약 확인 후 가능</td></tr><tr><th scope="row"><code>src/main/resources/static/js/home/*.js</code></th><td>타이머·BGM·출석 등 실제 동작</td><td>계약 확인 후 가능</td></tr><tr><th scope="row"><code>src/main/resources/static/js/home-react/**</code></th><td><code>npm run build:home</code> 생성물</td><td>금지</td></tr><tr><th scope="row"><code>.storybook/main.js</code></th><td>Story 탐색, Addon, 정적 파일 경로</td><td>설정 변경 시</td></tr><tr><th scope="row"><code>.storybook/preview.jsx</code></th><td>실제 Home CSS 연결</td><td>CSS 추가·순서 변경 시</td></tr></tbody></table></div><h2>렌더링과 기능 연결</h2><pre><code>home.html
+  └─ #home-react-root
+       └─ home-app.js
+            └─ main.jsx
+                 └─ HomeStage와 하위 React 컴포넌트
+                      └─ data-* DOM 계약
+                           └─ home.js와 home/* Controller
+</code></pre><p>React는 UI 구조를 렌더링하고 기존 JavaScript는 <code>data-*</code> 속성을 통해 기능을 연결한다. 따라서 <code>data-timer-*</code>, <code>data-bgm-*</code>, <code>data-attendance-*</code>, <code>data-presence-*</code> 같은 속성은 Controller를 함께 확인하지 않고 삭제하거나 이름을 바꾸지 않는다.</p><p>React 번들은 <code>home.js</code>보다 먼저 로드되어야 한다. 그래야 기존 JavaScript의 초기 <code>querySelector</code>가 React가 만든 DOM을 찾을 수 있다.</p><h2>컴포넌트와 Story 배치 규칙</h2><p>컴포넌트와 Story는 반드시 같은 디렉터리에 같은 이름으로 둔다.</p><pre><code>components/TimerPanel.jsx
+components/TimerPanel.stories.jsx
+</code></pre><p>새 Story를 별도 <code>src/stories/</code>에 만들지 않는다. 현재 <code>.storybook/main.js</code>는 <code>src/main/frontend/**/*.stories.*</code>를 탐색한다.</p><p>2026-08-14 기준 Home 전용 컴포넌트는 12종이고 Story는 38개다. 공통 UI와 출석·인증 Pattern, <code>GameDialog</code>·<code>GameTabs</code>를 포함하면 전체 21개 Story 그룹, 80개 Story다.</p><div class="table-scroll" tabindex="0" role="region" aria-label="원문 표"><table><caption>원문 표</caption><thead><tr><th scope="col">컴포넌트</th><th scope="col">역할</th></tr></thead><tbody><tr><th scope="row"><code>HomeDockButton</code></th><td>공통 빠른 실행 버튼</td></tr><tr><th scope="row"><code>TimerPanel</code></th><td>학습 타이머 표시와 동작 버튼</td></tr><tr><th scope="row"><code>StatusHud</code></th><td>캐릭터 레벨·경험치</td></tr><tr><th scope="row"><code>CharacterStage</code></th><td>캐릭터·날개·말풍선</td></tr><tr><th scope="row"><code>TopMenu</code></th><td>Home 상단 메뉴</td></tr><tr><th scope="row"><code>ChatDrawer</code></th><td>채팅 입력 패널</td></tr><tr><th scope="row"><code>ActionDock</code></th><td>채팅·출석·BGM·퇴실·재실 버튼 조립</td></tr><tr><th scope="row"><code>PresenceHud</code></th><td>재실 인원 버튼과 목록 패널</td></tr><tr><th scope="row"><code>BgmPlayer</code></th><td>BGM 컨트롤과 플레이리스트</td></tr><tr><th scope="row"><code>HomeOverlay</code></th><td>도움말·진행·설정 등 공통 overlay shell</td></tr><tr><th scope="row"><code>HomeStage</code></th><td>Home 전체 UI 조합</td></tr><tr><th scope="row"><code>ScrollPanel</code></th><td>세로·가로 공통 스크롤 영역</td></tr></tbody></table></div><h2>Storybook 데이터 규칙</h2><p>Story의 이름, 시간, 경험치, 재실 사용자와 학습 기록은 시각·동작 검증용 데이터다.</p><p class="document-list-line">- Story 전용 데이터는 <code>*.stories.jsx</code> 안에 둔다.</p><p class="document-list-line">- Story mock을 실제 컴포넌트, <code>main.jsx</code>, <code>home.js</code>에서 import하지 않는다.</p><p class="document-list-line">- Backend 명세에 없는 데이터를 실제 성공 fallback으로 사용하지 않는다.</p><p class="document-list-line">- 실제 API가 연결되면 API 응답을 컴포넌트 props로 변환하고 Story 데이터는 유지한다.</p><h2>CSS 배치와 로드 순서</h2><p>Storybook은 <code>.storybook/preview.jsx</code>에서 아래 순서로 실제 Home CSS를 읽는다.</p><pre><code>gameFont.css
+home.css
+home/home-ui.css
+home/react-stage.css
+home/home-responsive.css
+home/home-overlay-theme.css
+home/home-quick-panels.css
+ui/design-system.css
+</code></pre><p>CSS 책임은 다음처럼 나눈다.</p><p class="document-list-line">- <code>react-stage.css</code>: React Home stage와 공통 컴포넌트 기본 구조</p><p class="document-list-line">- <code>home-responsive.css</code>: 화면 폭·높이·비율에 따른 최종 배치</p><p class="document-list-line">- <code>home-overlay-theme.css</code>: overlay별 외형과 크기</p><p class="document-list-line">- <code>home-quick-panels.css</code>: BGM·출석·재실·Action Dock 외형</p><p class="document-list-line">- <code>ui/design-system.css</code>: 사용자 화면 공통 색상 토큰, 버튼·카드·입력창과 출석·인증 Pattern</p><p>Story에서만 모양을 맞추기 위해 제품 CSS와 다른 대규모 inline style을 만들지 않는다. Story decorator의 inline style은 배경, 캔버스 최소 높이와 정렬 같은 검증 환경에만 쓴다.</p><h2>신규 UI 추가 순서</h2><p class="document-list-line">1. <code>components/Name.jsx</code>에 실제 UI를 작성한다.</p><p class="document-list-line">2. 기존 Controller가 찾는 <code>data-*</code> 계약을 확인하고 보존한다.</p><p class="document-list-line">3. 같은 위치에 <code>components/Name.stories.jsx</code>를 만든다.</p><p class="document-list-line">4. 기본, 빈 값, 긴 값, 비활성, 좁은 화면 중 의미 있는 상태만 Story로 작성한다.</p><p class="document-list-line">5. 제품 CSS를 담당 CSS 파일에 추가한다.</p><p class="document-list-line">6. 전체 Home에 필요한 UI만 <code>HomeStage.jsx</code>에서 조립한다.</p><p class="document-list-line">7. React 소스를 변경했다면 Home bundle을 다시 생성한다.</p><p class="document-list-line">8. Storybook 빌드와 실제 Spring Home 기능을 함께 확인한다.</p><pre><code>npm run build:home
+npm run storybook
+npm run build-storybook
+./mvnw test
+</code></pre><h2>팀원이 변경을 받은 뒤 할 일</h2><p>의존성은 <code>package.json</code>과 <code>package-lock.json</code>에 이미 고정되어 있다. 팀원은 개별 Storybook, Radix UI 또는 Motion 설치 명령을 실행하지 않는다.</p><pre><code>git pull
+npm ci
+npm run build:home
+npm run storybook
+</code></pre><p>Backend만 수정하고 Frontend를 실행하지 않는 팀원은 npm 설치를 생략할 수 있다.</p><h2>현재 적용 상태와 다음 단계</h2><p class="document-list-line">- Storybook, Radix UI와 Motion 패키지 설치 완료</p><p class="document-list-line">- Home 전용 컴포넌트 12종·Story 38개 작성 완료</p><p class="document-list-line">- 공통 버튼·카드·입력창과 출석부·로그인·회원가입·Home 메뉴 내부 Pattern 추가, 전체 74개 Story 등록</p><p class="document-list-line">- 기준 초록 <code>#2FC47C</code>과 크림·하늘색·살구색·라일락 보조 토큰 구성</p><p class="document-list-line">- 출석·인증·Home 메뉴 내부 Pattern은 실제 View 표현 계층에 연결했으며 Story mock은 유입하지 않음</p><p class="document-list-line">- Storybook preview에 실제 Home의 반응형·overlay·quick panel CSS 로드 순서 반영</p><p class="document-list-line">- <code>ActionDock</code>의 재실·출석·BGM·퇴실·채팅 버튼을 같은 아이콘·라벨 DOM 구조로 통일</p><p class="document-list-line">- 출석 Controller가 <code>data-attendance-label</code>을 보존하면서 <code>퇴실</code>·<code>완료</code> 상태를 갱신</p><p class="document-list-line">- <code>ScrollPanel</code>에 세로·가로·모바일 Story와 Firefox·WebKit 스크롤 스타일 적용</p><p class="document-list-line">- Home·Storybook production build 통과, Vitest 21 files / 80 tests 통과</p><p class="document-list-line">- Radix UI와 Motion을 실제 Home 도움말·설정 Dialog와 진행 Tabs에 적용</p><p class="document-list-line">- 실제 template·bundle 통합 fixture의 5개 화면 비율과 패널 상호 배타 회귀 통과</p><p class="document-list-line">- 다음 검증은 Identity·View·Domain Service를 함께 실행한 인증·실제 API 종단 회귀</p><p>구조적 도입 결정은 ADR 0003, 실행 순서는 React 게임 UI 도입 실행 체크리스트, 공통 UI 적용은 공통 UI 디자인 시스템·Storybook 가이드를 함께 확인한다.</p></article><a class="text-link" href="document-3.txt" target="_blank" rel="noopener">텍스트 원문 보기 </a></main><footer class="wrap footer"><a class="brand" href="../../index.html" aria-label="포트폴리오 홈"><span class="brand-mark" aria-hidden="true">k.</span><span>문재민</span></a><p>UI/UX Portfolio © 2026 문재민</p><a href="#top">맨 위로 </a></footer></body></html>

@@ -1,0 +1,97 @@
+# [ADR] Home UI - 모바일 전용 경로와 Viewport Redirect 폐기
+
+## 1. 상태 (Status)
+
+- [ ] 제안됨 (Proposed)
+- [x] 수용됨 (Accepted)
+- [ ] 거절됨 (Rejected)
+- [ ] 폐기됨/대체됨 (Deprecated/Superseded)
+
+## 2. 배경 및 맥락 (Context)
+
+Home 화면을 모바일에서도 보기 좋게 만들기 위해 처음에는 `/mobile/home`과 `/mobile/character-selector` 같은 별도 경로를 두는 방식을 시도했다. 이 방식은 데스크톱 화면을 건드리지 않고 모바일 화면만 빠르게 실험할 수 있다는 장점이 있어 보였다.
+
+또한 로그인, 회원가입, 출석 완료 같은 흐름에서 브라우저의 화면 폭을 보고 모바일이면 모바일 경로로 보내는 viewport redirect 스크립트도 함께 시도했다.
+
+하지만 실제로 화면을 확인하면서 문제가 드러났다. Home 화면의 핵심 문제는 모바일 전용 화면이 없어서가 아니라, 기존 Home UI가 화면 비율 변화에 대응하는 구조를 갖고 있지 않다는 점이었다. PC 기준 Home도 브라우저 폭과 높이가 조금만 바뀌면 메뉴, 타이머, 캐릭터, HUD, 도크 버튼이 어색하게 움직였다.
+
+즉 문제의 본질은 "모바일 페이지가 필요하다"가 아니라 "Home 자체가 유동형 웹앱 stage로 설계되어 있지 않다"였다.
+
+## 3. 고려한 대안 (Alternatives)
+
+모바일 전용 경로 유지 — `/mobile/home` 컨트롤러와 별도 Thymeleaf 템플릿을 유지하고, 모바일 사용자는 `/mobile/home`으로 보내는 방식이다.
+
+Viewport redirect 유지 — `/home`에 들어온 사용자를 브라우저 폭에 따라 `/mobile/home`으로 보내고, 다시 넓은 화면이면 `/home`으로 되돌리는 방식이다.
+
+기존 Home에 responsive CSS만 추가 — 별도 경로를 만들지 않고 기존 `/home`에 breakpoint를 추가해 모바일과 태블릿을 대응하는 방식이다.
+
+Home React Island와 fluid stage로 전환 — `/home`을 단일 진입점으로 유지하고, Home UI를 React 컴포넌트로 분리한 뒤 화면 비율 기반의 유동형 stage로 재설계하는 방식이다.
+
+## 4. 결정 사항 및 사유 (Decision & Rationale)
+
+결정: 모바일 전용 Home 경로와 viewport redirect 방식을 폐기하고, `/home` 단일 진입점 + React Island + fluid stage 방향으로 전환한다.
+
+별도 모바일 경로는 처음에는 안전한 실험처럼 보였지만, Home 기능이 두 화면으로 갈라지는 문제가 있었다. PC Home과 Mobile Home이 서로 다른 구조가 되면 타이머, 캐릭터, 레벨, 출석, HUD, 도크 버튼 같은 핵심 기능 표현을 계속 두 벌로 맞춰야 한다.
+
+Viewport redirect도 적절하지 않았다. 서버의 인증 흐름과 사용자의 브라우저 화면 상태를 클라이언트 스크립트로 억지로 연결하는 구조가 되었고, `/home`이라는 핵심 진입점의 의미가 흐려졌다. 특히 Home이 앞으로 responsive stage가 되어야 한다면 `/home`을 다른 경로로 우회시키는 것 자체가 방향과 맞지 않는다.
+
+기존 Home에 responsive CSS만 추가하는 방식도 충분하지 않았다. 이미 기존 CSS에는 여러 폭과 높이에 대한 보정이 섞여 있었고, 특정 화면에서 맞춘 규칙이 다른 화면 비율에서 다시 문제를 만들었다.
+
+따라서 판단을 바꿨다. 모바일 전용 Home을 만드는 대신, Home 자체를 화면 비율에 대응하는 단일 웹앱 stage로 리팩토링하는 것이 더 맞다. React Island는 이 전환을 한 번에 전체 기능 재작성으로 키우지 않으면서 UI 구조를 컴포넌트 단위로 정리할 수 있는 중간 단계다.
+
+## 5. 결과 및 영향 (Consequences)
+
+### 장점 (Positive)
+
+Home의 진입점이 `/home` 하나로 유지된다.
+
+PC와 모바일의 Home 기능 표현이 두 벌로 갈라지지 않는다.
+
+인증, 인가, 로그인 성공 흐름, 세션 처리를 건드리지 않아도 된다.
+
+Home UI를 화면 비율 기반으로 다시 설계할 수 있다.
+
+React Island를 통해 UI 구조를 컴포넌트 단위로 나누면서 기존 `home.js` 기능은 유지할 수 있다.
+
+실패한 시도와 이유가 문서로 남아 이후 같은 방향의 반복 작업을 줄일 수 있다.
+
+### 단점 (Negative)
+
+모바일 전용 페이지를 빠르게 독립적으로 완성하는 방식은 포기한다.
+
+Home layout을 제대로 정리하려면 기존 CSS와 React stage CSS의 경계를 계속 관리해야 한다.
+
+별도 모바일 route를 제거했기 때문에, 모바일만 완전히 다른 UX를 제공하려면 나중에 다시 명확한 근거와 범위를 잡아야 한다.
+
+## 6. 규정 준수 (Compliance)
+
+Home 화면은 `/home`을 기준으로 유지한다.
+
+모바일 여부만으로 Home을 다른 경로로 자동 redirect하지 않는다.
+
+인증, 인가, JWT, 세션, 로그인 성공 URL은 변경하지 않는다.
+
+프론트 작업은 HTML, React, CSS, 기존 브라우저 JavaScript 범위로 제한한다.
+
+기존 기능 로직을 React로 옮길 때는 기능 단위로 작게 나누고, 기존 동작과 DOM 계약을 먼저 확인한다.
+
+## 7. 참고 사항 (Notes)
+
+폐기한 실험:
+
+- 모바일 전용 Home 컨트롤러
+- 모바일 전용 Home Thymeleaf 템플릿
+- 모바일 전용 Character Selector Thymeleaf 템플릿
+- 모바일 전용 CSS와 JS
+- viewport 기반 client-side route guard
+
+선택한 방향:
+
+- `/home` 단일 진입점
+- Home React Island
+- 화면 비율 기반 fluid stage
+- 기존 `home.js` 기능 계약 유지
+
+관련 ADR: `docs/adr/home-ui-react-island-fluid-stage.md`
+
+관련 설명 문서: `docs/mobile/mobile-view-research.md`

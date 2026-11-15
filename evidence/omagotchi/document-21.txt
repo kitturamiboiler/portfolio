@@ -1,0 +1,21 @@
+# UI/UX 설계 근거와 개선 이력
+
+| 사례 | 문제와 판단 | 근거 | 확인된 결과 / 한계 |
+|---|---|---|---|
+| 홈의 핵심 행동 접근 | 하단 스크롤 영역을 없애고 주요 기능을 첫 화면에 배치하려는 시도 | work-notes/082 | 개인 기록의 의도. 이후 작은 화면에서는 스크롤 차단이 문제로 나타남. 단순히 ‘스크롤 제거가 정답’으로 서술하지 않음 |
+| 모바일 전용 분리 재검토 | 특정 기기용 페이지 추가로는 PC·태블릿 화면비 문제와 기능 중복을 해결하지 못함 → /home 단일 진입, React Island와 fluid stage | decision-history, frontend ADR 0001·0002, e16744c | 결정 문서와 JSX·CSS·템플릿 변경 존재. 모바일 전용 분리는 최종 설계로 소개하지 않음 |
+| HUD 정렬 기준 통합 | 이름·레벨·XP·채팅·도크가 서로 다른 fixed 좌표 기준 → status cluster와 bottom HUD로 묶기 | bottom-hud-refactor, 개인 기록 185, CharacterStage 코드 | 설계·구현 증거. 문서의 viewport 검증 기준은 전부 통과했다는 의미가 아님 |
+| 반응형과 도달 가능성 | 중복 100vh/overflow hidden, 버튼 겹침 → 스크롤 허용, safe area, clamp, Grid 흐름 | responsive-layout-refactor, 개인 기록 186, react-stage.css | 구조적 대응 확인. 현재 기기별 전후 캡처 필요 |
+| 타이머 문구 | 메뉴의 기록 조회와 타이머 아래 기록 저장이 혼동 → ‘구간기록’으로 저장 목적 구분 | 개인 기록 164 | UX 판단 기록 확인. 오조작 감소·성공률 상승 수치는 없음 |
+| 공통 상태 | 화면마다 표현 기준이 흩어짐 → 컬러 토큰·Button/Card/Field·상태 Story | ui-design-system, 26e2987, GameButton | primary/secondary/soft/danger는 코드 variant. loading과 disabled는 별도 상태. Figma Variant set은 미확인 |
+| 로딩·빈 값·실패 구분 | API 미연동 또는 실패를 가짜 데이터로 채우지 않고 명확히 표시 | frontend-backend-connection-map | loading/empty/ready/error/unauthorized/forbidden 계약 존재. 모든 서버 흐름 완성은 아님 |
+| 패널 안정성 | 기록 모달·오버레이 높이 변화 대응 | 8e87f69 CSS diff | 높이 제약 구현 확인. CLS 수치 측정 없음 |
+| 접근성 | 공부 중 인디케이터의 불필요한 라이브 리전 낭독 방지 | 35cab0e diff | role 변경 확인. 보조공학 사용자 테스트 미확인 |
+
+## 디자인과 개발의 연결
+
+가이드는 Storybook 외형 검토 → UI 문구 확정 → Form·data-* 계약 보존 → 서버/BFF 응답 연결 → 회귀 확인의 순서를 제안한다. 이 내용은 협업 방식의 산출물이며 팀이 실제로 전 과정을 합의·수행했다는 회의 증거는 아니다.
+
+## 결과를 표현할 때
+
+기획 목표는 학습 동기·성취감 향상이다. 실제 효과를 보여줄 사용자 수·유지율·학습시간 증가·UT 성공률·설문 원자료는 이번 조사에서 확인하지 못했다. 기술 테스트와 Story 렌더링 수를 사용자 경험 개선 효과로 바꾸지 않는다. 당시 회고에는 구조 중복과 브라우저 사용자 흐름 검증 부족도 기록돼 있다.

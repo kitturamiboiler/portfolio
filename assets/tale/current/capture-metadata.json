@@ -1,0 +1,61 @@
+{
+  "repository": "https://github.com/voice-tale/voice-tale-client",
+  "branch": "dev",
+  "commit": "66b1e1e",
+  "capturedAt": "2026-11-15",
+  "method": "Actual frontend components rendered in an isolated temporary copy with existing test/fakeServer fixtures. No production component changes.",
+  "backendRunning": false,
+  "audio": "Silent WAV test fixture, browser-compatible sample rate for preview only",
+  "screens": [
+    {
+      "file": "kiosk-home.jpg",
+      "width": 800,
+      "height": 480
+    },
+    {
+      "file": "kiosk-books.jpg",
+      "width": 800,
+      "height": 480
+    },
+    {
+      "file": "kiosk-player.jpg",
+      "width": 800,
+      "height": 480
+    },
+    {
+      "file": "kiosk-voice-picker.jpg",
+      "width": 800,
+      "height": 480
+    },
+    {
+      "file": "kiosk-account.jpg",
+      "width": 800,
+      "height": 480
+    },
+    {
+      "file": "kiosk-setup.jpg",
+      "width": 800,
+      "height": 480
+    },
+    {
+      "file": "mobile-books.jpg",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "mobile-voices.jpg",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "mobile-story.jpg",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "mobile-account.jpg",
+      "width": 390,
+      "height": 844
+    }
+  ]
+}
