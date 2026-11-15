@@ -354,3 +354,33 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .contact-email{display:block;margin-top:24px;font-size:clamp(18px,3vw,28px)}
 
 @media(max-width:700px){.carousel-bubbles{flex-wrap:wrap}.case-body p,.document-reader article{line-height:1.9}}
+
+/* Project selection precedes the artwork on narrow screens. */
+.featured-carousel{display:flex;flex-direction:column;min-width:0}
+.carousel-viewport{order:0}
+.carousel-controls{order:1}
+.chapter-reason{margin-top:24px;max-width:68ch}
+.case-background{grid-column:1 / -1}
+.case-body>.chapter:first-child{padding-top:0}
+[data-case-nav] a[aria-current="location"]{color:var(--green);font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.mobile-case-nav{display:none}
+@media(max-width:700px){
+ .carousel-controls{order:0;border-top:0;border-bottom:1px solid var(--line);padding:0 0 12px;margin:0 0 20px}
+ .carousel-arrow{display:none}
+ .carousel-bubbles{width:100%;gap:4px;flex-wrap:nowrap}
+ .carousel-bubble{flex:1;padding-inline:8px}
+ .carousel-viewport{order:1}
+ .mobile-case-nav{display:block;position:sticky;top:0;z-index:20;background:var(--paper);border-block:1px solid var(--line);overflow-anchor:none}
+ .mobile-case-nav>summary{display:flex;align-items:center;gap:12px;list-style:none;min-height:60px;padding:12px 20px;cursor:pointer;font-size:14px}
+ .mobile-case-nav>summary::-webkit-details-marker{display:none}
+ .toc-label{font-weight:700;color:var(--green);flex-shrink:0}
+ [data-current-section]{min-width:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .toc-open,.toc-close{flex-shrink:0;color:var(--muted);text-decoration:underline;text-underline-offset:4px}
+ .toc-close,.mobile-case-nav[open] .toc-open{display:none}
+ .mobile-case-nav[open] .toc-close{display:inline}
+ .mobile-case-nav nav{position:absolute;top:100%;left:0;right:0;max-height:65dvh;overflow:auto;overscroll-behavior:contain;padding:8px 20px 16px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 18px 24px -24px var(--ink)}
+ .mobile-case-nav nav a{display:flex;align-items:center;min-height:48px;padding:12px 8px;font-size:15px;line-height:1.6;border-bottom:1px solid var(--line)}
+ .mobile-case-nav nav a:last-child{border-bottom:0}
+ .case-body [id]{scroll-margin-top:60px}
+ .case-toc{display:none}
+}

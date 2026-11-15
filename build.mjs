@@ -1,16 +1,47 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { mkdirSync } from 'node:fs';
 import { projects } from './data.mjs';
 import { notes } from './case-notes.mjs';
-import { head, nav, footer, home, image, gallery, arrow, lightbox, special, library, designReflection, savePage, omagotchiShowcase } from './render.mjs';
+import { head, nav, footer, home, image, gallery, lightbox, special, library, designReflection, savePage, omagotchiShowcase } from './render.mjs';
 
 savePage('index.html',head('찾기 쉽게, 행동은 분명하게','정보 구조, 반응형 UI, 상태 설계와 프론트엔드 구현을 연결한 세 프로젝트.')+nav()+home()+footer()+'</body></html>');
 mkdirSync('projects',{recursive:true});
 for(const [index,p] of projects.entries()) {
  const n=notes[p.id];
  const chapters=[...p.chapters,...n.extraChapters];
- const chaptersHtml=chapters.map((c,i)=>`<section class="chapter" id="chapter-${i}"><div class="chapter-copy"><h2>${c.title}</h2><p>${c.text}</p></div>${gallery(c.images,c.layout)}</section>`).join('');
+ const primaryCount=p.id==='omagotchi'?2:p.chapters.length;
+ const chapter=(c,i)=>`<section class="chapter" id="chapter-${i}"><div class="chapter-copy"><h2>${c.title}</h2></div>${gallery(c.images,c.layout)}<p class="chapter-reason">${c.text}</p></section>`;
+ const chapterLinks=chapters.map((c,i)=>[`chapter-${i}`,c.title]);
+ const links=[...chapterLinks.slice(0,primaryCount),['context','문제와 방향'],['decisions','핵심 설계 판단'],[`thinking-${p.id}`,'설계할 때 생각한 것'],...chapterLinks.slice(primaryCount),['design-proof','구현 근거'],...(p.id==='supjigi'?[]:[['collaboration','협업과 조율']]),['reflection','결과와 검증 범위'],['evidence','전체 화면·문서']];
+ const tocLinks=()=>links.map(([id,title])=>`<a href="#${id}">${title}</a>`).join('');
  const decisions=`<section class="decision-section" id="decisions"><h2>${n.focus}</h2><p class="diagram-caption">제공 화면과 문서에서 재구성한 과업 흐름 · 사용자 조사 결과가 아닙니다.</p><ol class="task-flow">${n.flow.map(step=>`<li>${step}</li>`).join('')}</ol><dl class="decision-list">${n.choices.map(([label,choice,why])=>`<div><dt>${label}</dt><dd><strong>${choice}</strong><p>${why}</p></dd></div>`).join('')}</dl></section>`;
  const next=projects[(index+1)%projects.length];
- savePage(`projects/${p.id}.html`,head(p.name,p.summary,'../')+nav('../')+`<main id="main" class="case-${p.id}"><section class="case-head wrap" id="top"><a class="back text-link" href="../index.html#work">${arrow} 프로젝트 목록</a><div class="case-intro-grid"><div><h1>${p.name}</h1><p class="case-tagline">${p.title.replace('\n',' ')}</p><p class="case-summary">${p.intro}</p></div><dl class="case-meta"><div><dt>프로젝트</dt><dd>${p.type}</dd></div><div><dt>담당 역할</dt><dd>${n.role}</dd></div><div><dt>자료 기준</dt><dd>${p.status}</dd></div></dl></div><nav class="case-quicklinks" aria-label="빠른 탐색"><a href="#decisions">설계 판단</a><a href="#design-proof">구현 근거</a>${p.id==='supjigi'?'':'<a href="#collaboration">협업과 조율</a>'}<a href="#evidence">전체 화면·문서</a></nav></section><div class="case-cover ${p.color}"><div class="wrap case-cover-composition">${p.id==='omagotchi'?omagotchiShowcase('../'):image('../'+p.cover,p.coverAlt,'',true)}${p.id==='tale'?'<figure class="case-mobile-preview">'+image('../'+p.mobile,p.mobileAlt)+'<figcaption>모바일 웹 / 390×844 / dev 66b1e1e</figcaption></figure>':''}</div></div><div class="case-layout wrap"><aside class="case-toc"><p>${p.name}</p><nav aria-label="사례 목차"><a href="#context">문제와 방향</a><a href="#decisions">핵심 설계 판단</a>${chapters.map((c,i)=>`<a href="#chapter-${i}">${c.title}</a>`).join('')}<a href="#design-proof">구현 근거</a>${p.id==='supjigi'?'':'<a href="#collaboration">협업과 조율</a>'}<a href="#reflection">결과와 검증 범위</a><a href="#evidence">전체 화면·문서</a></nav>${p.live?`<a class="text-link" href="${p.live}" target="_blank" rel="noopener">서비스 보기 ${arrow}</a>`:''}</aside><div class="case-body"><section class="context" id="context"><div><h2>시작한 문제</h2><p>${p.context}</p></div><div><h2>선택한 방향</h2><p>${p.decision}</p></div></section>${decisions}${designReflection(p)}${chaptersHtml}${special(p)}<section class="reflection" id="reflection"><h2>만든 결과와 남은 질문</h2><h3>만든 결과</h3><p>${n.outcome}</p><h3>다음에 확인할 것</h3><p>${p.next}</p><details class="source"><summary>검증 범위와 자료 기준</summary><p>${n.limitation}</p><p>2026년 11월 15일 수집 자료 기준입니다. 담당 역할은 본인 설명을 반영했으며, 팀 산출물 전체를 개인 기여로 해석하지 않습니다.</p></details></section>${library(p)}</div></div><section class="next-project wrap"><p>다음 프로젝트</p><a href="${next.id}.html"><h2>${next.name}</h2>${arrow}</a></section></main>`+footer('../')+lightbox+'</body></html>');
+ savePage(`projects/${p.id}.html`,head(p.name,p.summary,'../')+nav('../')+`
+ <main id="main" class="case-${p.id}">
+  <section class="case-head wrap" id="top">
+   <a class="back text-link" href="../index.html#work">프로젝트 목록</a>
+   <div class="case-intro-grid">
+    <div><h1>${p.name}</h1><p class="case-tagline">${p.title.replace('\n',' ')}</p><p class="case-summary">${p.summary}</p></div>
+    <dl class="case-meta"><div><dt>프로젝트</dt><dd>${p.type}</dd></div><div><dt>담당 역할</dt><dd>${n.role}</dd></div><div><dt>자료 기준</dt><dd>${p.status}</dd></div></dl>
+   </div>
+  </section>
+  <details class="mobile-case-nav">
+   <summary><span class="toc-label">목차</span><span data-current-section>${links[0][1]}</span><span class="toc-open">열기</span><span class="toc-close">닫기</span></summary>
+   <nav aria-label="모바일 사례 목차" data-case-nav>${tocLinks()}</nav>
+  </details>
+  <div class="case-cover ${p.color}"><div class="wrap case-cover-composition">${p.id==='omagotchi'?omagotchiShowcase('../'):image('../'+p.cover,p.coverAlt,'',true)}${p.id==='tale'?'<figure class="case-mobile-preview">'+image('../'+p.mobile,p.mobileAlt)+'<figcaption>모바일 웹 / 390×844 / dev 66b1e1e</figcaption></figure>':''}</div></div>
+  <div class="case-layout wrap">
+   <aside class="case-toc"><p>${p.name}</p><nav aria-label="사례 목차" data-case-nav>${tocLinks()}</nav>${p.live?`<a class="text-link" href="${p.live}" target="_blank" rel="noopener">서비스 보기</a>`:''}</aside>
+   <div class="case-body">
+    ${chapters.slice(0,primaryCount).map(chapter).join('')}
+    <section class="context" id="context"><p class="case-background">${p.intro}</p><div><h2>시작한 문제</h2><p>${p.context}</p></div><div><h2>선택한 방향</h2><p>${p.decision}</p></div></section>
+    ${decisions}${designReflection(p)}
+    ${chapters.slice(primaryCount).map((c,i)=>chapter(c,i+primaryCount)).join('')}
+    ${special(p)}
+    <section class="reflection" id="reflection"><h2>만든 결과와 남은 질문</h2><h3>만든 결과</h3><p>${n.outcome}</p><h3>다음에 확인할 것</h3><p>${p.next}</p><details class="source"><summary>검증 범위와 자료 기준</summary><p>${n.limitation}</p><p>2026년 11월 15일 수집 자료 기준입니다. 담당 역할은 본인 설명을 반영했으며, 팀 산출물 전체를 개인 기여로 해석하지 않습니다.</p></details></section>
+    ${library(p)}
+   </div>
+  </div>
+  <section class="next-project wrap"><p>다음 프로젝트</p><a href="${next.id}.html"><h2>${next.name}</h2></a></section>
+ </main>`+footer('../')+lightbox+'</body></html>');
 }
 console.log('Built 4 portfolio pages and 39 source document readers; evidence images catalogued.');
