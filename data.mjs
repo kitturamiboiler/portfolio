@@ -1,4 +1,4 @@
-export const profile = { name: '문재민', nickname: 'm00n · 귀뚜라미보일러', email: 'mjm3204@naver.com', github: 'https://github.com/kitturamiboiler', site: 'https://kitturamiboiler.github.io/portfolio/' };
+export const profile = { name: '문재민', nickname: 'm00n · 귀뚜라미보일러', email: 'mjm3204@naver.com', github: 'https://github.com/kitturamiboiler', site: 'https://kitturamiboiler.github.io/portfolio/', repository: 'https://github.com/kitturamiboiler/portfolio' };
 export const projects = [
   {
     id: 'supjigi', name: '숲지기', type: '게임 정보 웹', title: '찾은 정보가\n나의 조합이 되기까지.',
