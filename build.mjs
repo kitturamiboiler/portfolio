@@ -1,9 +1,11 @@
 import { mkdirSync } from 'node:fs';
 import { projects } from './data.mjs';
 import { notes } from './case-notes.mjs';
+import { about } from './about.mjs';
 import { head, nav, footer, home, image, gallery, lightbox, special, library, designReflection, savePage, omagotchiShowcase } from './render.mjs';
 
 savePage('index.html',head('찾기 쉽게, 행동은 분명하게','정보 구조, 반응형 UI, 상태 설계와 프론트엔드 구현을 연결한 세 프로젝트.')+nav()+home()+footer()+'</body></html>');
+savePage('about.html',head('문재민 소개','문재민의 UI/UX·프론트엔드 프로젝트 경험과 담당 역할, 수상 이력.')+nav('','about')+about()+footer()+lightbox+'</body></html>');
 mkdirSync('projects',{recursive:true});
 for(const [index,p] of projects.entries()) {
  const n=notes[p.id];
@@ -44,4 +46,4 @@ for(const [index,p] of projects.entries()) {
   <section class="next-project wrap"><p>다음 프로젝트</p><a href="${next.id}.html"><h2>${next.name}</h2></a></section>
  </main>`+footer('../')+lightbox+'</body></html>');
 }
-console.log('Built 4 portfolio pages and 39 source document readers; evidence images catalogued.');
+console.log('Built 5 portfolio pages and 39 source document readers; evidence images catalogued.');

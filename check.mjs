@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { projects } from './data.mjs';
 const walk = dir => readdirSync(dir,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(`${dir}/${entry.name}`):[`${dir}/${entry.name}`]);
-const files=['index.html', ...projects.map(p=>`projects/${p.id}.html`),...walk('evidence').filter(file=>file.endsWith('.html'))];
+const files=['index.html','about.html', ...projects.map(p=>`projects/${p.id}.html`),...walk('evidence').filter(file=>file.endsWith('.html'))];
 for (const file of files) {
  const html = readFileSync(file,'utf8');
  assert(html.includes('lang="ko"'));
