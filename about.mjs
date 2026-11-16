@@ -17,6 +17,10 @@ export const about=()=>`<main id="main" class="resume wrap">
   <h2 id="resume-intro-title">소개</h2>
   <div><p>정보 구조와 화면 상태를 설계하고, 프론트엔드에서 실제 동작으로 연결합니다. 작은 화면에서 필요한 기능에 도달할 수 있는지, 다음 행동이 분명한지를 살피며 UI를 다듬습니다.</p><p>Figma에서 레이아웃과 베리언트를 구성하고, 구현 과정에서는 반응형 배치와 공통 UI 상태를 검토합니다. 팀원이 기능을 이어 붙일 수 있도록 연결 지점과 남은 결정을 문서로 정리합니다.</p></div>
  </section>
+ <section class="resume-statement" aria-labelledby="resume-statement-title">
+  <h2 id="resume-statement-title">자기소개서</h2>
+  <div class="resume-statement-body"><p class="resume-pending">추후 작성 예정</p></div>
+ </section>
  <section class="resume-education" aria-labelledby="resume-education-title">
   <h2 id="resume-education-title">학력</h2>
   <p class="resume-pending">추후 작성 예정</p>
