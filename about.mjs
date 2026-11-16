@@ -35,6 +35,10 @@ export const about=()=>`<main id="main" class="resume wrap">
   <h2 id="resume-education-title">학력</h2>
   <div><h3>조선대학교</h3><p>재학 · 졸업예정</p><p class="resume-context">2021.03 ~</p><p>취업계 가능</p></div>
  </section>
+ <section class="resume-education resume-copyright" aria-labelledby="resume-copyright-title">
+  <h2 id="resume-copyright-title">저작권 등록</h2>
+  <div class="resume-character"><figure class="resume-character-art">${image('assets/profile/shiromong.png','흰색의 둥근 몸과 작은 팔다리를 가진 픽셀 캐릭터 시로몽')}</figure><div><h3>시로몽</h3><p>흰색의 둥근 형태와 작은 팔다리가 특징인 오리지널 픽셀 캐릭터입니다. 직접 드로잉한 디자인을 바탕으로 Aseprite에서 32×32 픽셀로 제작했습니다.</p><p class="resume-context">캐릭터 기획·디자인·픽셀 이미지 제작<br>등록번호 C-2026-040776</p></div></div>
+ </section>
  <section class="resume-projects" aria-labelledby="resume-projects-title">
   <h2 id="resume-projects-title">프로젝트에서 맡은 일</h2>
   <article class="resume-project">
@@ -56,10 +60,6 @@ export const about=()=>`<main id="main" class="resume wrap">
    <div class="resume-award-copy"><time datetime="2026-11-07">2026.11.07</time><h3>우수상</h3><p>제14회 GIST AI&IoT 메이커톤<br>GIST 창업진흥센터장상</p><p>404팀 · Voice Tale × Image Tale</p><a class="resume-case-link" href="projects/tale.html">수상 프로젝트 보기</a></div>
    <figure class="resume-award-photo"><button class="image-zoom" data-zoom aria-label="메이커톤 우수상 수상 사진 확대 보기" title="이미지 확대"><span class="zoom-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5M7.5 10.5h6m-3-3v6"/></svg></span>${image('assets/profile/gist-excellence-2026.png','404팀이 함께 촬영한 메이커톤 우수상 수상 기념 사진')}</button><figcaption>팀원들과 함께 남긴 수상 기념 사진</figcaption></figure>
   </div>
- </section>
- <section class="resume-education resume-copyright" aria-labelledby="resume-copyright-title">
-  <h2 id="resume-copyright-title">저작권 등록</h2>
-  <div><h3>시로몽</h3><p>직접 제작한 캐릭터</p><p class="resume-context">등록번호 C-2026-040776</p></div>
  </section>
  <p class="resume-bottom-link"><a href="index.html#work">프로젝트 전체 보기</a></p>
 </main>`;

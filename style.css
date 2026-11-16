@@ -470,3 +470,10 @@ time,table{font-variant-numeric:tabular-nums}
 
 .resume-statement-body h3{font-size:18px;font-weight:700;line-height:1.5;margin:0 0 12px}
 .resume-statement-body p+h3{margin-top:32px}
+
+.resume-character{display:grid;grid-template-columns:144px minmax(0,1fr);gap:28px;align-items:center}
+.resume-character-art{margin:0;display:grid;place-items:center;width:144px;height:144px;background:#e9eee5;border-radius:12px}
+.resume-character-art img{width:128px;height:128px;image-rendering:pixelated}
+.resume-character p{font-size:17px;line-height:1.85;margin-top:10px}
+.resume-character .resume-context{font-size:15px}
+@media(max-width:500px){.resume-character{grid-template-columns:minmax(0,1fr);gap:20px}}
