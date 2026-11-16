@@ -36,7 +36,7 @@ export const projects = [
     ],
     outcome: '반응형 구조 결정, 공통 UI와 상태 계약, 개발 인계 문서가 확인됩니다. 현재 모든 서버 흐름이 연결되거나 기기별 사용성이 검증되었다는 의미는 아닙니다.',
     next: '세로·가로·작은 높이에서 핵심 행동의 도달 가능성과, 기록 조회·구간 저장의 문구 이해도를 검증할 필요가 있습니다.',
-    source: 'portfolio-evidence2/design-decisions.md, design/frontend-docs/, screens/README.md'
+    source: 'portfolio-evidence2/design-decisions.md, design/frontend-docs/, screens/README.md', live: 'https://omagotchi.site/'
   },
   {
     id: 'tale', name: 'Voice Tale × Image Tale', type: '모바일과 Raspberry Pi를 잇는 AI 동화', title: '익숙한 목소리로,\n새로운 이야기 속으로.',

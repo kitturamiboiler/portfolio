@@ -35,6 +35,10 @@ export const about=()=>`<main id="main" class="resume wrap">
   <h2 id="resume-education-title">학력</h2>
   <div><h3>조선대학교</h3><p>재학 · 졸업예정</p><p class="resume-context">2021.03 ~</p><p>취업계 가능</p></div>
  </section>
+ <section class="resume-education resume-training" aria-labelledby="resume-training-title">
+  <h2 id="resume-training-title">교육 이수</h2>
+  <div><h3>IoT/AI 기반 Java Backend 개발자 과정</h3><p>NHN Academy · 수료</p><p class="resume-context">2025.12.23 ~ 2026.09.22</p></div>
+ </section>
  <section class="resume-education resume-copyright" aria-labelledby="resume-copyright-title">
   <h2 id="resume-copyright-title">저작권 등록</h2>
   <div class="resume-character"><figure class="resume-character-art">${image('assets/profile/shiromong.png','흰색의 둥근 몸과 작은 팔다리를 가진 픽셀 캐릭터 시로몽')}</figure><div><h3>시로몽</h3><p>흰색의 둥근 형태와 작은 팔다리가 특징인 오리지널 픽셀 캐릭터입니다. 직접 드로잉한 디자인을 바탕으로 Aseprite에서 32×32 픽셀로 제작했습니다.</p><p class="resume-context">캐릭터 기획·디자인·픽셀 이미지 제작<br>등록번호 C-2026-040776</p></div></div>
