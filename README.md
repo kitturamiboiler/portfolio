@@ -35,4 +35,12 @@ Omagotchi의 대표 화면은 2026.11.15 omagotchi.site에서 직접 촬영한 �
 
 소개는 `about.html`에 분리했습니다. 메인의 소개 링크와 상단 메뉴에서 연결되며, 사진·연락처·자기소개·프로젝트별 담당 역할·수상 내역을 짧게 읽는 구성입니다. 프로필 사진은 사용자 원본의 AI 보정본이며, 수상 사진은 제공 원본을 사용합니다.
 
-프로젝트 기간은 data.mjs의 period/periodLabel에 모아 소개·상세에서 함께 사용합니다. 사용자 확인 기준 Omagotchi는 2026.07.06~09.22, Voice Tale의 작업 확인 기간은 2026.10.24~11.07, 숲지기는 2026.11.05부터 진행 중입니다. 학력 영역은 추후 작성할 자리만 마련했습니다. 수상 대회명은 사용자 확인에 따라 GIST AI&IoT 메이커톤으로 통일했습니다. Omagotchi 대표 역할은 UI/UX 중심으로 요약하고 추가 담당 범위는 상세에서 펼쳐볼 수 있습니다.
+프로젝트 기간은 data.mjs의 period/periodLabel에 모아 소개·상세에서 함께 사용합니다. 사용자 확인 기준 Omagotchi는 2026.07.06~09.22, Voice Tale의 작업 확인 기간은 2026.10.24~11.07, 숲지기는 2026.11.05부터 진행 중입니다. 학력은 조선대학교 재학·졸업예정(2021.03~), 취업계 가능으로 반영했습니다. 수상 대회명은 사용자 확인에 따라 GIST AI&IoT 메이커톤으로 통일했습니다. Omagotchi 대표 역할은 UI/UX 중심으로 요약하고 추가 담당 범위는 상세에서 펼쳐볼 수 있습니다.
+
+## 프로필 README 이미지
+
+`assets/readme/profile.svg`는 외부 이미지 요청 없이 실제 프로젝트 화면을 포함한 SVG입니다. 다른 저장소의 README에서는 다음처럼 사용합니다.
+
+```md
+[![문재민 포트폴리오](https://raw.githubusercontent.com/kitturamiboiler/portfolio/main/assets/readme/profile.svg)](https://kitturamiboiler.github.io/portfolio/)
+```

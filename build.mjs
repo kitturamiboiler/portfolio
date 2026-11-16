@@ -2,7 +2,7 @@ import { mkdirSync } from 'node:fs';
 import { projects } from './data.mjs';
 import { notes } from './case-notes.mjs';
 import { about } from './about.mjs';
-import { head, nav, footer, home, image, gallery, lightbox, special, library, designReflection, savePage, omagotchiShowcase } from './render.mjs';
+import { head, nav, footer, home, image, gallery, lightbox, special, library, designReflection, savePage, omagotchiShowcase, projectName } from './render.mjs';
 
 savePage('index.html',head('찾기 쉽게, 행동은 분명하게','정보 구조, 반응형 UI, 상태 설계와 프론트엔드 구현을 연결한 세 프로젝트.')+nav()+home()+footer()+'</body></html>');
 savePage('about.html',head('문재민 소개','문재민의 UI/UX·프론트엔드 프로젝트 경험과 담당 역할, 수상 이력.')+nav('','about')+about()+footer()+lightbox+'</body></html>');
@@ -22,7 +22,7 @@ for(const [index,p] of projects.entries()) {
   <section class="case-head wrap" id="top">
    <a class="back text-link" href="../index.html#work">프로젝트 목록</a>
    <div class="case-intro-grid">
-    <div><h1>${p.name}</h1><p class="case-tagline">${p.title.replace('\n',' ')}</p><p class="case-summary">${p.summary}</p></div>
+    <div><h1>${projectName(p.name)}</h1><p class="case-tagline">${p.title.replace('\n',' ')}</p><p class="case-summary">${p.summary}</p></div>
     <dl class="case-meta"><div><dt>프로젝트</dt><dd>${p.type}</dd></div><div><dt>담당 역할</dt><dd>${n.role}</dd></div><div><dt>${p.periodLabel}</dt><dd>${p.period}</dd></div><div><dt>자료 기준</dt><dd>${p.status}</dd></div></dl>
    </div>
   </section>
@@ -32,7 +32,7 @@ for(const [index,p] of projects.entries()) {
   </details>
   <div class="case-cover ${p.color}"><div class="wrap case-cover-composition">${p.id==='omagotchi'?omagotchiShowcase('../'):image('../'+p.cover,p.coverAlt,'',true)}${p.id==='tale'?'<figure class="case-mobile-preview">'+image('../'+p.mobile,p.mobileAlt)+'<figcaption>모바일 웹 / 390×844 / dev 66b1e1e</figcaption></figure>':''}</div></div>
   <div class="case-layout wrap">
-   <aside class="case-toc"><p>${p.name}</p><nav aria-label="사례 목차" data-case-nav>${tocLinks()}</nav>${p.live?`<a class="text-link" href="${p.live}" target="_blank" rel="noopener">서비스 보기</a>`:''}</aside>
+   <aside class="case-toc"><p>${projectName(p.name)}</p><nav aria-label="사례 목차" data-case-nav>${tocLinks()}</nav>${p.live?`<a class="text-link" href="${p.live}" target="_blank" rel="noopener">서비스 보기</a>`:''}</aside>
    <div class="case-body">
     ${chapters.slice(0,primaryCount).map(chapter).join('')}
     <section class="context" id="context"><p class="case-background">${p.intro}</p><div><h2>시작한 문제</h2><p>${p.context}</p></div><div><h2>선택한 방향</h2><p>${p.decision}</p></div></section>
@@ -43,7 +43,7 @@ for(const [index,p] of projects.entries()) {
     ${library(p)}
    </div>
   </div>
-  <section class="next-project wrap"><p>다음 프로젝트</p><a href="${next.id}.html"><h2>${next.name}</h2></a></section>
+  <section class="next-project wrap"><p>다음 프로젝트</p><a href="${next.id}.html"><h2>${projectName(next.name)}</h2></a></section>
  </main>`+footer('../')+lightbox+'</body></html>');
 }
 console.log('Built 5 portfolio pages and 39 source document readers; evidence images catalogued.');
