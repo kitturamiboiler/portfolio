@@ -19,7 +19,15 @@ export const about=()=>`<main id="main" class="resume wrap">
  </section>
  <section class="resume-statement" aria-labelledby="resume-statement-title">
   <h2 id="resume-statement-title">자기소개서</h2>
-  <div class="resume-statement-body"><p class="resume-pending">추후 작성 예정</p></div>
+  <div class="resume-statement-body">
+   <h3>지원동기</h3>
+   <p>프론트엔드를 구현하면서 기능이 동작하는 것과 편하게 사용할 수 있는 화면을 만드는 것은 다르다는 점을 배웠습니다. 화면을 어떤 순서로 보여주고, 사용자의 다음 행동을 어떻게 도울지 고민하는 과정에 관심이 생겼습니다. 직접 구현해 온 경험을 바탕으로 설계 의도를 화면에 담고, 피드백을 통해 발전시키는 UI/UX 디자이너로 일하고 싶습니다.</p>
+   <h3>프로젝트 경험과 피드백</h3>
+   <p>Voice Tale × Image Tale에서는 프론트엔드와 UI 작업 대부분을 맡았습니다. 구현에는 AI를 적극 활용했고, 화면의 구성과 동작을 검토하며 수정했습니다. 처음 플레이어를 만들었을 때 팀원에게 “굳이 이렇게 만든 이유가 있어?”, “어떤 의도로 만든 화면이야?”라는 질문을 받았습니다.</p>
+   <p>그 질문을 계기로 우리 서비스가 이야기를 듣는 것뿐 아니라 글을 함께 읽는 리딩 서비스라는 점을 다시 생각했습니다. 본문도 함께 보여주자는 의견을 받아들여 Spotify와 YouTube Music의 플레이어 구성을 참고하고, 글과 재생 조작을 함께 볼 수 있도록 화면을 수정했습니다. 피드백을 통해 제가 놓친 서비스의 목적을 다시 확인하고, 설계를 바꾼 경험입니다.</p>
+   <h3>성격의 장단점</h3>
+   <p>제 강점은 부족한 부분을 인정하고 다시 시도하는 끈기입니다. 수정할 점을 들으면 더 잘 만들 기회가 생겼다고 생각하며, 시도한 방법이 잘되지 않더라도 원인을 살피고 다른 방법을 찾으려 합니다. 다만 작은 정렬이나 간격 차이가 눈에 들어오면 이를 바로잡는 데 시간을 오래 쓰기도 합니다. 이를 보완하기 위해 사용에 영향을 주는 문제부터 해결하고, 세부적인 표현은 이후에 다듬는 식으로 작업 순서를 잡으려 합니다.</p>
+  </div>
  </section>
  <section class="resume-education" aria-labelledby="resume-education-title">
   <h2 id="resume-education-title">학력</h2>

@@ -467,3 +467,6 @@ time,table{font-variant-numeric:tabular-nums}
 .resume-statement-body{min-width:0;max-width:65ch;font-size:17px;line-height:1.9}
 .resume-statement-body p+p{margin-top:20px}
 @media(max-width:700px){.resume-statement{grid-template-columns:minmax(0,1fr);gap:16px}}
+
+.resume-statement-body h3{font-size:18px;font-weight:700;line-height:1.5;margin:0 0 12px}
+.resume-statement-body p+h3{margin-top:32px}
