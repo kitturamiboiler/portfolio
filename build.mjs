@@ -23,7 +23,7 @@ for(const [index,p] of projects.entries()) {
    <a class="back text-link" href="../index.html#work">프로젝트 목록</a>
    <div class="case-intro-grid">
     <div><h1>${p.name}</h1><p class="case-tagline">${p.title.replace('\n',' ')}</p><p class="case-summary">${p.summary}</p></div>
-    <dl class="case-meta"><div><dt>프로젝트</dt><dd>${p.type}</dd></div><div><dt>담당 역할</dt><dd>${n.role}</dd></div><div><dt>자료 기준</dt><dd>${p.status}</dd></div></dl>
+    <dl class="case-meta"><div><dt>프로젝트</dt><dd>${p.type}</dd></div><div><dt>담당 역할</dt><dd>${n.role}</dd></div><div><dt>${p.periodLabel}</dt><dd>${p.period}</dd></div><div><dt>자료 기준</dt><dd>${p.status}</dd></div></dl>
    </div>
   </section>
   <details class="mobile-case-nav">

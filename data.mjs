@@ -2,6 +2,7 @@ export const profile = { name: '문재민', nickname: 'm00n · 귀뚜라미보�
 export const projects = [
   {
     id: 'supjigi', name: '숲지기', type: '게임 정보 웹', title: '찾은 정보가\n나의 조합이 되기까지.',
+    period: '2026.11.05 ~ 현재', periodLabel: '진행 기간',
     summary: '흩어진 게임 공략을 검색하고, 비교하고, 내 조합에 연결하는 탐색 경험.',
     cover: 'assets/supjigi/pc-home-viewport.jpg', mobile: 'assets/supjigi/mobile-home-viewport.jpg', coverAlt: '숲지기의 검색과 초보자 가이드가 배치된 홈 화면', color: 'forest',
     scope: '정보 구조 / 검색 UX / 모바일 편집', status: '2026.11 운영 화면 기준',
@@ -19,6 +20,7 @@ export const projects = [
   },
   {
     id: 'omagotchi', name: 'Omagotchi', type: '캐릭터 기반 학습 서비스', title: '공부하는 일상에\n성장하는 즐거움을.',
+    period: '2026.07.06 ~ 2026.09.22', periodLabel: '작업 기간',
     summary: '출결과 학습 타이머, 캐릭터 성장을 하나의 홈으로 연결하는 경험.',
     cover: 'assets/omagotchi/live/desktop-home.jpg', coverAlt: 'Omagotchi 실제 운영 데스크톱 홈 / 2026.11.15', color: 'mint',
     scope: '반응형 구조 / 공통 UI / 상태 설계', status: '2026.11.15 운영 화면 / 초기 시안·Storybook 별도',
@@ -38,6 +40,7 @@ export const projects = [
   },
   {
     id: 'tale', name: 'Voice Tale × Image Tale', type: '모바일과 Raspberry Pi를 잇는 AI 동화', title: '익숙한 목소리로,\n새로운 이야기 속으로.',
+    period: '2026.10.24 ~ 2026.11.07', periodLabel: '작업 확인 기간',
     summary: '보호자의 모바일 입력과 어린이의 터치 화면 감상을 연결하는 동화 경험.',
     cover: 'assets/tale/current/kiosk-player.jpg', coverAlt: '최신 dev의 Raspberry Pi용 800×480 동화 플레이어 프론트 화면. 테스트 데이터 사용.', mobile: 'assets/tale/current/mobile-books.jpg', mobileAlt: '최신 dev의 모바일 웹 책 목록. 테스트 데이터 사용.', color: 'sage',
     scope: '사용자 흐름 / 터치 UI / 디바이스 경험', status: 'dev 66b1e1e / 2026.11.15 프론트 캡처 / 테스트 데이터',

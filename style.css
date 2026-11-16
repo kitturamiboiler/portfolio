@@ -458,3 +458,7 @@ body{font-weight:400}
 .resume-intro p,.chapter-reason,.document-reader article{letter-spacing:-.005em}
 .contact-links a{letter-spacing:0;font-variant-numeric:lining-nums}
 time,table{font-variant-numeric:tabular-nums}
+
+.resume-education{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;padding-block:32px;border-bottom:1px solid var(--line)}
+.resume-pending{font-size:16px;line-height:1.9;color:var(--muted)}
+@media(max-width:700px){.resume-education{grid-template-columns:minmax(0,1fr);gap:16px}}
