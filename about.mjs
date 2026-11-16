@@ -57,5 +57,9 @@ export const about=()=>`<main id="main" class="resume wrap">
    <figure class="resume-award-photo"><button class="image-zoom" data-zoom aria-label="메이커톤 우수상 수상 사진 확대 보기" title="이미지 확대"><span class="zoom-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5M7.5 10.5h6m-3-3v6"/></svg></span>${image('assets/profile/gist-excellence-2026.png','404팀이 함께 촬영한 메이커톤 우수상 수상 기념 사진')}</button><figcaption>팀원들과 함께 남긴 수상 기념 사진</figcaption></figure>
   </div>
  </section>
+ <section class="resume-education resume-copyright" aria-labelledby="resume-copyright-title">
+  <h2 id="resume-copyright-title">저작권 등록</h2>
+  <div><h3>시로몽</h3><p>직접 제작한 캐릭터</p><p class="resume-context">등록번호 C-2026-040776</p></div>
+ </section>
  <p class="resume-bottom-link"><a href="index.html#work">프로젝트 전체 보기</a></p>
 </main>`;
