@@ -17,7 +17,7 @@ Node.js 18 이상에서 `npm run build`, `npm run dev`를 실행한 다음 http:
 - `style.css`: 반응형 스타일
 - `assets/`: 제공 자료에서 복사한 선별 이미지. 원본은 수정하지 않았습니다.
 
-변경 후 `npm run build`를 실행하면 홈과 `projects/`의 상세 HTML을 갱신합니다. 생성 HTML은 JavaScript 없이도 읽을 수 있고, JavaScript는 대표 프로젝트 전환과 이미지 확대에 사용됩니다. Google Fonts는 온라인에서 로드되며 오프라인에서는 기본 글꼴로 표시됩니다.
+변경 후 `npm run build`를 실행하면 홈과 `projects/`의 상세 HTML을 갱신합니다. 생성 HTML은 JavaScript 없이도 읽을 수 있고, JavaScript는 대표 프로젝트 전환과 이미지 확대에 사용됩니다. Pretendard Variable 글꼴을 assets/fonts에서 직접 제공합니다. 글꼴 라이선스도 같은 폴더에 포함했습니다.
 
 각 사례 하단에서 화면 68개와 문서 39개를 열람할 수 있습니다. Omagotchi에는 컴포넌트 코드 5개도 포함했습니다. 본문 도식·상태표는 제공 자료를 바탕으로 새로 정리한 설명 자료이며, 원본 Figma나 새 사용자 조사 결과가 아닙니다. 원본 문서는 HTML을 실행하지 않고 텍스트로 변환하며 로컬 경로·이메일을 생략합니다.
 
