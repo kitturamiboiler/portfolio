@@ -35,7 +35,7 @@ for(const [index,p] of projects.entries()) {
    <aside class="case-toc"><p>${projectName(p.name)}</p><nav aria-label="사례 목차" data-case-nav>${tocLinks()}</nav></aside>
    <div class="case-body">
     ${chapters.slice(0,primaryCount).map(chapter).join('')}
-${n.eventPhotos?`<section class="chapter" id="event-photos"><div class="chapter-copy"><h2>화면이 실제 기기에 담기기까지</h2></div><p class="chapter-reason">GIST AI&amp;IoT 메이커톤 당시 팀의 제작 현장입니다. 실물 터치 화면에 표시된 Voice Tale 책장과 Raspberry Pi 조립, 부품과 배선을 준비한 작업 공간을 함께 담았습니다. 아래 사진은 대회 당시 기록이며, 위의 최신 dev 프론트 캡처와는 시점이 다릅니다.</p>${gallery(n.eventPhotos.primary,"event-photos")}<details class="event-more"><summary>부품과 제작 과정 사진 5장 더 보기</summary>${gallery(n.eventPhotos.additional,"event-details")}</details></section>`:''}
+${n.eventPhotos?`<section class="chapter" id="event-photos"><div class="chapter-copy"><h2>화면이 실제 기기에 담기기까지</h2></div><p class="chapter-reason">GIST AI&amp;IoT 메이커톤 당시 팀의 제작 현장입니다. 실물 터치 화면에 표시된 Voice Tale 책장과 Raspberry Pi 조립, 부품과 배선을 준비한 작업 공간을 함께 담았습니다. 아래 사진은 대회 당시 기록이며, 위의 최신 dev 프론트 캡처와는 시점이 다릅니다.</p>${gallery(n.eventPhotos.primary,"event-photos")}<details class="event-more"><summary>부품과 제작 과정 사진 ${n.eventPhotos.additional.length}장 더 보기</summary>${gallery(n.eventPhotos.additional,"event-details")}</details></section>`:''}
     <section class="context" id="context"><p class="case-background">${p.intro}</p><div><h2>시작한 문제</h2><p>${p.context}</p></div><div><h2>선택한 방향</h2><p>${p.decision}</p></div></section>
     ${decisions}${designReflection(p)}
     ${chapters.slice(primaryCount).map((c,i)=>chapter(c,i+primaryCount)).join('')}
