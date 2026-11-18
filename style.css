@@ -478,9 +478,17 @@ time,table{font-variant-numeric:tabular-nums}
 .resume-character .resume-context{font-size:15px}
 @media(max-width:500px){.resume-character{grid-template-columns:minmax(0,1fr);gap:20px}}
 
-.gallery.event-photos{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;margin-top:28px}
-.gallery.event-photos .image-zoom,.gallery.event-details .image-zoom{background:transparent;padding:0}
-.gallery.event-photos img,.gallery.event-details img{width:100%;height:auto;max-height:none;object-fit:contain}
-.event-more{margin-top:28px}.event-more summary{cursor:pointer;font-size:17px;text-decoration:underline;text-underline-offset:5px}
-.gallery.event-details{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;margin-top:24px}
-@media(max-width:700px){.gallery.event-photos,.gallery.event-details{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery.event-photos>figure:first-child{grid-column:1 / -1;max-width:400px;margin-inline:auto}}
+.gallery.event-photos{grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 16px;align-items:start;margin-top:28px}
+.gallery.event-photos .image-zoom{padding:0;background:var(--soft)}
+.gallery.event-photos img{width:100%;height:auto;aspect-ratio:4 / 5;max-height:none;object-fit:cover;object-position:center}
+.gallery.event-photos figcaption{font-size:14px;line-height:1.65;margin-top:8px}
+.chapter-content{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(230px,1fr);gap:32px;align-items:center;margin-top:28px}
+.chapter-content>.gallery{margin-top:0;min-width:0}
+.case-body .chapter-content>.chapter-reason{margin-top:0}
+.chapter-content .gallery.mixed{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);align-items:center;gap:16px}
+.chapter-content .gallery.mixed figure:nth-child(2){width:100%;max-width:230px}
+.chapter-content .gallery.mobile-platforms{gap:16px}
+.chapter-content .gallery.mobile-platforms figure{max-width:230px;width:100%;margin-inline:auto}
+.chapter-content .gallery.single{width:100%;max-width:420px}
+@media(max-width:1000px){.chapter-content{grid-template-columns:minmax(0,1fr);gap:20px}.gallery.event-photos{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){.gallery.event-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}.chapter-content{margin-top:24px}.chapter-content .gallery.mixed{grid-template-columns:minmax(0,1fr);gap:24px}.chapter-content .gallery.mixed figure:nth-child(2){margin-inline:auto}.chapter-content .gallery.mobile-platforms{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
