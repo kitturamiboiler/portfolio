@@ -33,7 +33,7 @@ export const about=()=>`<main id="main" class="resume wrap">
  </section>
  <section class="resume-education" aria-labelledby="resume-education-title">
   <h2 id="resume-education-title">학력</h2>
-  <div><h3>조선대학교</h3><p>재학 · 졸업예정</p><p class="resume-context">2021.03 ~</p><p>취업계 가능</p></div>
+  <div><h3>조선대학교</h3><p>전자공학부 지능 IoT 전공</p><p>재학 · 졸업예정</p><p class="resume-context">2021.03 ~</p><p>취업계 가능</p></div>
  </section>
  <section class="resume-education resume-training" aria-labelledby="resume-training-title">
   <h2 id="resume-training-title">교육 이수</h2>

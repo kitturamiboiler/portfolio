@@ -42,12 +42,13 @@ export const notes = {
       ['화면 대응','모바일과 Pi를 서로 다른 사용 환경으로','모바일은 390×844, Pi는 800×480의 최신 프론트 캡처로 정보와 조작 배치를 확인했습니다.']
     ],
     flow:['보호자: 목소리·그림 입력','동화 준비·전달 기획','어린이: 종류·책 선택','목소리 선택','터치 화면에서 감상'],
+    eventPhotos:{primary:[['assets/tale/event/device-books.webp','대회 당시 · 실물 터치 화면의 Voice Tale 책장'],['assets/tale/event/pi-assembly.jpg','대회 당시 · Raspberry Pi와 디스플레이 조립'],['assets/tale/event/wiring-desk.webp','대회 당시 · 부품과 배선을 준비한 작업 책상']],additional:[['assets/tale/event/display-part.jpg','디스플레이 부품'],['assets/tale/event/speaker-part.jpg','스피커 부품'],['assets/tale/event/team-desk.jpg','팀 작업 책상'],['assets/tale/event/display-cable.jpg','터치 디스플레이 연결 케이블'],['assets/tale/event/display-assembly.jpg','디스플레이와 보드의 연결 구조']]},
     extraChapters:[
       {title:'감상 화면에는 감상에 필요한 것부터',text:'Pi 홈은 음성 동화와 창작 동화의 두 진입점에 집중합니다. 모바일과 같은 관리 메뉴를 나열하는 대신, 기기에서 고르고 듣는 과업을 우선한 전용 화면입니다.',images:[['assets/tale/current/kiosk-home.jpg','Raspberry Pi 홈 / 800×480 / 최신 dev 프론트']],layout:'resolution'},
       {title:'기기와 모바일의 저장 범위를 구분하기',text:'기기와 모바일에는 각각의 계정·저장 관리 화면이 있습니다. 같은 동화라도 어느 환경에 저장된 것인지 구분하고, 삭제가 영향을 주는 범위를 화면에서 설명합니다. 아래 계정과 기기 번호는 저장소의 테스트 데이터입니다.',images:[['assets/tale/current/kiosk-account.jpg','Pi 기기 관리 / 800×480 / 테스트 데이터'],['assets/tale/current/mobile-account.jpg','모바일 계정·저장 관리 / 390×844 / 테스트 데이터']],layout:'mixed'},
       {title:'처음 연결하는 순간도 화면의 일부로',text:'전용 디바이스의 초기 설정은 콘텐츠를 듣기 전에 거치는 흐름입니다. 최신 설정 화면을 함께 제시하되, 실제 네트워크 연결이나 기기 등록 성공을 검증한 자료로 해석하지 않습니다.',images:[['assets/tale/current/kiosk-setup.jpg','Raspberry Pi 초기 설정 / 800×480 / 최신 dev 프론트']],layout:'resolution'}
     ],
-    limitation:'현재 화면은 2026년 11월 15일 dev 66b1e1e의 실제 프론트 컴포넌트를 저장소의 테스트 데이터로 렌더링한 캡처입니다. 백엔드는 실행하지 않았고, 테스트 음원은 무음 데이터입니다. APK나 Pi 실물 촬영, AI 생성·서버 연동·오디오 품질 검증과 구분합니다. 예전 화면과 설계안은 과거 자료로 따로 보존했습니다. Figma 담당 역할은 본인 설명 기준입니다.',
+    limitation:'현재 화면은 2026년 11월 15일 dev 66b1e1e의 실제 프론트 컴포넌트를 저장소의 테스트 데이터로 렌더링한 캡처입니다. 백엔드는 실행하지 않았고, 테스트 음원은 무음 데이터입니다. 최신 프론트 캡처와 대회 당시 실물 기기 사진은 별도로 표시합니다. 현장 사진만으로 AI 생성·서버 연동·오디오 품질의 검증을 주장하지 않습니다. 예전 화면과 설계안은 과거 자료로 따로 보존했습니다. Figma 담당 역할은 본인 설명 기준입니다.',
     outcome:'모바일 입력·관리와 Pi의 선택·재생을 나눈 최신 프론트 화면을 구성했습니다. 최신 dev에서는 계정·동화·목소리·작업 상태 API를 다루는 코드도 확인했으며, 여기서는 백엔드 없이 UI만 검토했습니다.'
   }
 };
