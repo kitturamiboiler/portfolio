@@ -65,5 +65,9 @@ export const about=()=>`<main id="main" class="resume wrap">
    <figure class="resume-award-photo"><button class="image-zoom" data-zoom aria-label="메이커톤 우수상 수상 사진 확대 보기" title="이미지 확대"><span class="zoom-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5M7.5 10.5h6m-3-3v6"/></svg></span>${image('assets/tale/event/team-award-masked.jpg','404팀 세 명이 함께 촬영한 우수상 수상 사진. 팀원 두 명의 얼굴은 제공된 원본에서 가려져 있습니다.')}</button><figcaption>팀원들과 함께 남긴 수상 기념 사진</figcaption></figure>
   </div>
  </section>
+ <section class="resume-education" aria-labelledby="resume-certificates-title">
+  <h2 id="resume-certificates-title">등록증</h2>
+  <div><h3>시로몽 저작권 등록증</h3><p class="resume-context">한국저작권위원회 · 등록번호 C-2026-040776</p><details class="source"><summary>등록증 펼쳐보기</summary><p>주소와 생년월일을 제외한 공개용 등록증입니다.</p><div class="gallery single"><figure><button class="image-zoom" data-zoom aria-label="시로몽 저작권 등록증 확대 보기" title="이미지 확대"><span class="zoom-label" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4.5 4.5M7.5 10.5h6m-3-3v6"/></svg></span>${image('assets/profile/shiromong-certificate.svg','시로몽 저작권 등록증. 등록번호 C-2026-040776, 저작자 문재민. 주소와 생년월일은 제외했습니다.')}</button><figcaption>시로몽 저작권 등록증 · 개인정보 제외 공개본</figcaption></figure></div></details></div>
+ </section>
  <p class="resume-bottom-link"><a href="index.html#work">프로젝트 전체 보기</a></p>
 </main>`;
