@@ -1,6 +1,7 @@
 import { mkdirSync } from 'node:fs';
 import { projects } from './data.mjs';
 import { notes } from './case-notes.mjs';
+import { screenStories } from './screen-stories.mjs';
 import { about } from './about.mjs';
 import { head, nav, footer, home, image, gallery, lightbox, special, library, designReflection, savePage, omagotchiShowcase, projectName } from './render.mjs';
 
@@ -11,7 +12,11 @@ for(const [index,p] of projects.entries()) {
  const n=notes[p.id];
  const chapters=[...p.chapters,...n.extraChapters];
  const primaryCount=p.id==='omagotchi'?2:p.chapters.length;
- const chapter=(c,i)=>`<section class="chapter" id="chapter-${i}"><div class="chapter-copy"><h2>${c.title}</h2></div><div class="chapter-content">${gallery(c.images,c.layout)}<p class="chapter-reason">${c.text}</p></div></section>`;
+ const chapter=(c,i)=>{
+  const stories=screenStories[p.id]?.[i];
+  if(!stories||stories.length!==c.images.length)throw Error('Missing screen stories: '+p.id+'/'+i);
+  return `<section class="chapter" id="chapter-${i}"><div class="chapter-copy"><h2>${c.title}</h2></div><div class="screen-stories">${c.images.map((entry,j)=>{const [title,text]=stories[j];const mobile=/mobile|reading-/.test(entry[0]);return `<article class="screen-story${j%2?' screen-story-reverse':''}${mobile?' screen-story-mobile':''}"><div class="screen-story-media">${gallery([entry],c.layout)}</div><div class="screen-story-copy"><h3>${title}</h3><p class="chapter-reason">${text}</p></div></article>`;}).join('')}</div></section>`;
+ };
  const chapterLinks=chapters.map((c,i)=>[`chapter-${i}`,c.title]);
  const links=[...chapterLinks.slice(0,primaryCount),...(n.eventPhotos?[['event-photos','대회 현장과 실물 기기']]:[]),['context','문제와 방향'],['decisions','핵심 설계 판단'],[`thinking-${p.id}`,'설계할 때 생각한 것'],...chapterLinks.slice(primaryCount),['design-proof','구현 근거'],...(p.id==='supjigi'?[]:[['collaboration','협업과 조율']]),['reflection','결과와 검증 범위'],['evidence','전체 화면·문서']];
  const tocLinks=()=>links.map(([id,title])=>`<a href="#${id}">${title}</a>`).join('');
